@@ -1,0 +1,51 @@
+<ion-header>
+
+    <ion-navbar color="primary">
+        <button ion-button icon-only color="light" (click)="home()">
+      <ion-icon name="md-settings"></ion-icon>
+    </button>
+
+        <ion-title>
+            Home
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only color="dark" (click)="help()">
+        <ion-icon name="md-help"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list no-lines>
+        <ion-item>
+            <ion-avatar item-left>
+                <img>
+            </ion-avatar>
+            <h1> Childs Name </h1>
+            <p> Points </p>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button large full color="danger" (click)="takePhotoPage()">
+        <ion-icon name="md-camera">
+          <br>Take a Picture
+          </ion-icon>
+      </button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button large full color="secondary" (click)="seeProjects()">
+        <ion-icon name="md-images">
+          <br>Look at a Picture
+          </ion-icon>
+      </button>
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>

@@ -1,0 +1,40 @@
+<ion-header>
+
+    <ion-navbar color="danger">
+        <button ion-button icon-only (click)="home()">
+      <ion-icon name="md-home"></ion-icon>
+    </button>
+
+        <ion-title>
+            Take Photo
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only (click)="help()">
+        <ion-icon name="md-help"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list no-lines>
+
+        <ion-item>
+            <button ion-button full large (click)="takePhoto()">
+        <ion-icon name="md-camera">Take a Picture</ion-icon>
+      </button>
+        </ion-item>
+
+        <ion-item>
+            <button ion-button full large (click)="choosePhoto()">
+        <ion-icon name="md-images">Choose a Picture</ion-icon>
+      </button>
+        </ion-item>
+
+    </ion-list>
+
+</ion-content>
