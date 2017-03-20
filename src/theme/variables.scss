@@ -15,23 +15,25 @@ $font-path: "../assets/fonts";
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( primary: #387ef5, secondary: #32db64, danger: #f53d3d, light: #f4f4f4, dark: #222);
+$colors: ( primary: #45b271, secondary: #4d6884, danger: #f59940, light: #3abecc, dark: #bb742e, record: #cb2f2a);
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
 $toolbar-ios-height: 5rem;
 $toolbar-ios-title-font-size: 3rem;
-$background-ios-color: #F2F2F2;
-$list-ios-background-color: #F2F2F2;
+$background-ios-color: #ece9e4;
+$list-ios-background-color: #ece9e4;
 $button-ios-large-height: 15rem;
+$button-ios-small-height: 7rem;
 // App Android Variables
 // --------------------------------------------------
 // Android only Sass variables can go here
 $toolbar-md-height: 6rem;
 $toolbar-md-title-font-size: 3rem;
-$background-md-color: #F2F2F2;
-$list-md-background-color: #F2F2F2;
+$background-md-color: #ece9e4;
+$list-md-background-color: #ece9e4;
 $button-md-large-height: 15rem;
+$button-md-small-height: 7rem;
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here

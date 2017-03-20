@@ -1,16 +1,16 @@
 <ion-header>
 
     <ion-navbar color="danger">
-        <button ion-button icon-only color="light" (click)="home()">
+        <button ion-button icon-only color="primary" (click)="home()">
       <ion-icon name="md-home"></ion-icon>
     </button>
 
         <ion-title>
-            Upload Photo
+            Upload
         </ion-title>
 
         <ion-buttons end>
-            <button ion-button icon-only color="dark" (click)="help()">
+            <button ion-button icon-only color="white" (click)="help()">
         <ion-icon name="md-help"></ion-icon>
       </button>
         </ion-buttons>
@@ -25,16 +25,18 @@
         <ion-item>
             <img src="{{passedPhoto}}">
         </ion-item>
-        <button ion-button full color="danger" (click)="record">
+        <ion-item>
+            <button ion-button small full color="record" (click)="record">
             <ion-icon name="md-mic"><br>Add Voice</ion-icon>
           </button>
+        </ion-item>
         <ion-item>
-            <button ion-button full color="light" (click)="addText">
+            <button ion-button small full color="light" (click)="addText">
             <ion-icon name="md-text"><br>Add Text</ion-icon>
            </button>
         </ion-item>
         <ion-item>
-            <button ion-button full color="green" (click)="postPhoto">
+            <button ion-button small full color="green" (click)="postPhoto">
             <ion-icon name="ios-send"><br>Post</ion-icon>
           </button>
         </ion-item>

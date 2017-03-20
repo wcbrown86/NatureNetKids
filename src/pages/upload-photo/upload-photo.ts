@@ -1,6 +1,7 @@
 //Imports for Cordova and native Ionic fuctions
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { MediaPlugin } from 'ionic-native';
 
 //Page Imports for Navigation
 import { HomePage } from '../home/home';
@@ -23,5 +24,9 @@ export class UploadPhotoPage {
   home() {
     let goHome = this.modalCtrl.create(HomePage);
     goHome.present();
+  }
+
+  record() {
+
   }
 }
