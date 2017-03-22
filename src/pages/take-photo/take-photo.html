@@ -1,7 +1,7 @@
 <ion-header>
 
-    <ion-navbar color="danger">
-        <button ion-button icon-only (click)="home()">
+    <ion-navbar color="takePhoto">
+        <button ion-button icon-only color="home" (click)="home()">
       <ion-icon name="md-home"></ion-icon>
     </button>
 
@@ -10,7 +10,7 @@
         </ion-title>
 
         <ion-buttons end>
-            <button ion-button icon-only (click)="help()">
+            <button ion-button icon-only color="white" (click)="help()">
         <ion-icon name="md-help"></ion-icon>
       </button>
         </ion-buttons>
@@ -24,13 +24,13 @@
     <ion-list no-lines>
 
         <ion-item>
-            <button ion-button full large color="secondary" (click)="takePhoto()">
+            <button ion-button full large color="takePhoto" (click)="takePhoto()">
         <ion-icon name="md-camera">Take a Picture</ion-icon>
       </button>
         </ion-item>
 
         <ion-item>
-            <button ion-button full large color="light" (click)="choosePhoto()">
+            <button ion-button full large color="seePhoto" (click)="choosePhoto()">
         <ion-icon name="md-images">Choose a Picture</ion-icon>
       </button>
         </ion-item>
