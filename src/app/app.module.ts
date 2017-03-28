@@ -1,16 +1,37 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
+//Firebase and Cloudinary dependent imports
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+import { AngularFireModule } from 'angularfire2';
+//Added AuthProvider
+import { AuthProvider} from '../providers/auth-provider';
+//Pages
 import { HomePage } from '../pages/home/home';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
+<<<<<<< HEAD
+import { ObservationsPage } from '../pages/observations/observations';
+import { LoginPage } from '../pages/login/login';
+
+=======
 import { RecordPagePage } from '../pages/record-page/record-page';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+>>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
 
 const cloudSettings: CloudSettings = {
   'core': {
     'app_id': 'aafebad1'
   }
+};
+
+export const firebaseConfig ={
+    //apiKey info for the testing database
+    apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
+    authDomain: "naturenet-testing.firebaseapp.com",
+    databaseURL: "https://naturenet-testing.firebaseio.com",
+    storageBucket: "naturenet-testing.appspot.com",
+    messagingSenderId: "37913246342"
 };
 
 @NgModule({
@@ -19,11 +40,18 @@ const cloudSettings: CloudSettings = {
     HomePage,
     TakePhotoPage,
     UploadPhotoPage,
+<<<<<<< HEAD
+    ObservationsPage,
+    LoginPage
+=======
     RecordPagePage
+>>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings)
+    CloudModule.forRoot(cloudSettings),
+     //Initailizing the firebase using theconst variable above
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,8 +59,13 @@ const cloudSettings: CloudSettings = {
     HomePage,
     TakePhotoPage,
     UploadPhotoPage,
+<<<<<<< HEAD
+    ObservationsPage,
+    LoginPage
+=======
     RecordPagePage
+>>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider]
 })
 export class AppModule {}
