@@ -1,0 +1,40 @@
+<!--
+  Generated template for the Observations page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="takePhoto">
+    <ion-buttons left>
+    <button ion-button icon-only color="home" (click)="home()">
+      <ion-icon name="md-home"></ion-icon>
+    </button>
+
+    </ion-buttons>
+        <ion-title>
+            Observations
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only color="white" (click)="help()">
+        <ion-icon name="md-help"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+ 	<h1> Observations Page </h1>
+    <p> TEST </p>
+    <div item-content *ngFor="let observation of observations | async">
+  		<ion-item><p>Observation Comment:</p> 
+      {{observation.data.text}}
+      <p>Observer ID:</p>
+      {{observation.observer}}</ion-item>
+  	</div>
+
+</ion-content>
