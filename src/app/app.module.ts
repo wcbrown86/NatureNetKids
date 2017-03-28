@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
+import { RecordPagePage } from '../pages/record-page/record-page';
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
 const cloudSettings: CloudSettings = {
@@ -17,7 +18,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     TakePhotoPage,
-    UploadPhotoPage
+    UploadPhotoPage,
+    RecordPagePage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -28,7 +30,8 @@ const cloudSettings: CloudSettings = {
     MyApp,
     HomePage,
     TakePhotoPage,
-    UploadPhotoPage
+    UploadPhotoPage,
+    RecordPagePage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })

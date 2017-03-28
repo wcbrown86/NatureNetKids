@@ -1,12 +1,10 @@
+
 <ion-header>
 
-    <ion-navbar color="danger">
-        <button ion-button icon-only color="home" (click)="home()">
-      <ion-icon name="md-home"></ion-icon>
-    </button>
+    <ion-navbar color="record">
 
         <ion-title>
-            Upload
+            Record
         </ion-title>
 
         <ion-buttons end>
@@ -23,21 +21,25 @@
 
     <ion-list no-lines>
         <ion-item>
-            <img src="{{passedPhoto}}">
+  
         </ion-item>
         <ion-item>
-            <button ion-button small full color="record" (click)="record()">
+            <button ion-button small full color="record" (click)="recordAudio()">
             <ion-icon name="md-mic"><br>Add Voice</ion-icon>
           </button>
         </ion-item>
         <ion-item>
-            <button ion-button small full color="addText" (click)="addText()">
+            <button ion-button small full color="addText" (click)="play()">
             <ion-icon name="md-text"><br>Add Text</ion-icon>
            </button>
         </ion-item>
         <ion-item>
-            <button ion-button small full color="submit" (click)="postPhoto()">
-            <ion-icon name="ios-send"><br>Post</ion-icon>
+          <button ion-button small color="record" class="buttonWidth" (click)="cancel()">
+          	Cancel
+          </button>
+
+          <button ion-button small color="submit" class="buttonWidth" (click)="save()">
+          	Save
           </button>
         </ion-item>
 

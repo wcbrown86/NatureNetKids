@@ -1,7 +1,9 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/v2/theming/
+
 $font-path: "../assets/fonts";
 @import "ionic.globals";
+
 // Shared Variables
 // --------------------------------------------------
 // To customize the look and feel of this app, you can override
@@ -15,25 +17,33 @@ $font-path: "../assets/fonts";
 // to match your app's branding. Ionic uses a Sass map of
 // colors so you can add, rename and remove colors as needed.
 // The "primary" color is the only required color in the map.
-$colors: ( primary: #45b271, secondary: #4d6884, danger: #f59940, light: #3abecc, dark: #bb742e, home: #45b271, seePhoto: #4d6884, takePhoto: #f59940, addText: #3abecc, extra: #bb742e, record: #cb2f2a, submit: #21ab67);
+
+$colors: ( primary: #45b271, secondary: #4d6884, danger: #f59940, light: #3abecc, dark: #bb742e, 
+	home: #45b271, seePhoto: #4d6884, takePhoto: #f59940, addText: #3abecc, extra: #bb742e, record: #cb2f2a, 
+	submit: #21ab67);
+
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
+
 $toolbar-ios-height: 5rem;
 $toolbar-ios-title-font-size: 3rem;
 $background-ios-color: #ece9e4;
 $list-ios-background-color: #ece9e4;
 $button-ios-large-height: 15rem;
 $button-ios-small-height: 7rem;
+
 // App Android Variables
 // --------------------------------------------------
 // Android only Sass variables can go here
+
 $toolbar-md-height: 6rem;
 $toolbar-md-title-font-size: 3rem;
 $background-md-color: #ece9e4;
 $list-md-background-color: #ece9e4;
 $button-md-large-height: 15rem;
 $button-md-small-height: 7rem;
+
 // App Material Design Variables
 // --------------------------------------------------
 // Material Design only Sass variables can go here
@@ -46,13 +56,18 @@ $button-md-small-height: 7rem;
 // then be future customized. This import comes last
 // so that the above variables are used and Ionic's
 // default are overridden.
+
 @import "ionic.theme.default";
+
 // Ionicons
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/v2/ionicons/
+
 @import "ionic.ionicons";
+
 // Fonts
 // --------------------------------------------------
+
 @import "roboto";
 @import "noto-sans";
