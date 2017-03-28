@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController , ModalController} from 'ionic-angular';
-
+//Pages
 import { TakePhotoPage } from '../take-photo/take-photo';
+import { ObservationsPage } from '../observations/observations';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
@@ -18,6 +20,18 @@ takePhotoPage(){
   photoModal.present();
 
 }
-  
+
+seeProjects(){
+
+  let observationsModal = this.modalCtrl.create(ObservationsPage);
+  observationsModal.present();
+
+} 
+
+goToLogin(){
+
+  let loginModal = this.modalCtrl.create(LoginPage);
+  loginModal.present();
+}
 
 }
