@@ -33,9 +33,9 @@ private observations: FirebaseListObservable<any[]>;
   }
 
   home(){
-    this.navCtrl.push(HomePage);
-    //let goHome = this.modalCtrl.create(HomePage);
-    //goHome.present();
+    
+    let goHome = this.modalCtrl.create(HomePage);
+    goHome.present();
 
   }
 

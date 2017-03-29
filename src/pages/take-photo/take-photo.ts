@@ -56,7 +56,7 @@ export class TakePhotoPage {
   //library.
   choosePhoto(){
    //Camera function that pulls a photo from the device library.  
-   /*
+   
    Camera.getPicture({
      //photo options
      sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
@@ -73,9 +73,7 @@ export class TakePhotoPage {
      }, (err) => {
       console.log(err);
     });
-    */
-    let uploadPhoto = this.modalCtrl.create(UploadPhotoPage);
-    uploadPhoto.present();
+
 
   }
 
