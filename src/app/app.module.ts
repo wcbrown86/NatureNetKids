@@ -10,14 +10,9 @@ import { AuthProvider} from '../providers/auth-provider';
 import { HomePage } from '../pages/home/home';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
 import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
-<<<<<<< HEAD
 import { ObservationsPage } from '../pages/observations/observations';
 import { LoginPage } from '../pages/login/login';
-
-=======
 import { RecordPagePage } from '../pages/record-page/record-page';
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
->>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -40,12 +35,9 @@ export const firebaseConfig ={
     HomePage,
     TakePhotoPage,
     UploadPhotoPage,
-<<<<<<< HEAD
     ObservationsPage,
-    LoginPage
-=======
+    LoginPage,
     RecordPagePage
->>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -59,12 +51,9 @@ export const firebaseConfig ={
     HomePage,
     TakePhotoPage,
     UploadPhotoPage,
-<<<<<<< HEAD
     ObservationsPage,
-    LoginPage
-=======
+    LoginPage,
     RecordPagePage
->>>>>>> 1ba3b41c70c45635d01c52129cb41e7f76376a5a
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider]
 })
