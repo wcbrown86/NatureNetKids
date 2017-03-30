@@ -34,15 +34,10 @@ private observations: FirebaseListObservable<any[]>;
 
   home(){
     
+    //Function for home button navigation 
     let goHome = this.modalCtrl.create(HomePage);
     goHome.present();
 
-  }
-
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ObservationsPage');
   }
 
 }

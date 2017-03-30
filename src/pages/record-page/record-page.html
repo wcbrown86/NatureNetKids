@@ -21,17 +21,23 @@
 
     <ion-list no-lines>
         <ion-item>
-  
-        </ion-item>
-        <ion-item>
-            <button ion-button small full color="record" (click)="recordAudio()">
+          <button ion-button small full color="record" (click)="recordAudio()">
             <ion-icon name="md-mic"><br>Record</ion-icon>
           </button>
         </ion-item>
         <ion-item>
-            <button ion-button small full color="addText" (click)="play()">
-            	Play/Stop
-           </button>
+          <button ion-button small full color="dark" (click)="stopRecord()">
+            <ion-icon name="md-mic"><br>Stop Recording</ion-icon>
+          </button>
+        </ion-item>
+        <ion-item>
+          <button ion-button small color="light" class="buttonWidth" (click)="playAudio()">
+            Play
+          </button>
+
+          <button ion-button small color="danger" class="buttonWidth" (click)="stopAudio()">
+            Stop
+          </button>
         </ion-item>
         <ion-item>
           <button ion-button small color="record" class="buttonWidth" (click)="cancel()">
