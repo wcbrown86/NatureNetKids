@@ -30,11 +30,14 @@
 
  	<h1> Observations Page </h1>
     <p> TEST </p>
-    <div item-content *ngFor="let observation of observations | async">
-  		<ion-item><p>Observation Comment:</p> 
-      {{observation.data.text}}
-      <p>Observer ID:</p>
-      {{observation.observer}}</ion-item>
+    <div item-content *ngFor="let activity of activities | async">
+  		<ion-item><p>Activity Comment:</p> 
+      {{activity.name}}
+      <p>Activity Name:</p>
+      {{activity.image_url}}</ion-item>
+      
+        <img src={{activity.image_url}}>
+
   	</div>
 
 </ion-content>
