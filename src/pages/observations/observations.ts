@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+//Angulrfire imports
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
 //May not be needed. Wait to remove!
 //import * as firebase from 'firebase';
+
+//Cloudinary
+import { CloudinaryModule } from '@cloudinary/angular';
+//import { Cloudinary } from 'cloudinary-core';
+
+
 
 /*
   Generated class for the Observations page.
@@ -20,24 +26,32 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class ObservationsPage {
 
 //The arraylist to hold all the activities in the test database
-private observations: FirebaseListObservable<any[]>;
+//private observations: FirebaseListObservable<any[]>;
+private activities: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
   public modalCtrl: ModalController,
-  private angFire: AngularFire) {
+  private angFire: AngularFire,
+  private loadingCtrl: LoadingController) {
 
     //Goes to the firebase naturenet-testing database, gets all the activity entires
     //and puts them into the observations arraylist
-  	this.observations = this.angFire.database.list('/observations');
+  	//this.observations = this.angFire.database.list('/observations');
+    //this.activities = this.angFire.database.list('/activities');
+    this.activities = this.angFire.database.list('/items');
+   
   }
 
   home(){
-    
-    //Function for home button navigation 
-    let goHome = this.modalCtrl.create(HomePage);
-    goHome.present();
+    this.navCtrl.push(HomePage);
+    //let goHome = this.modalCtrl.create(HomePage);
+    //goHome.present();
 
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad ObservationsPage');
   }
 
 }
