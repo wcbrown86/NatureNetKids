@@ -1,7 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-//Firebase and Cloudinary dependent imports
+//Angularfire module imports
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { AngularFireModule } from 'angularfire2';
 //Added AuthProvider
@@ -13,6 +13,9 @@ import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
 import { ObservationsPage } from '../pages/observations/observations';
 import { LoginPage } from '../pages/login/login';
 import { RecordPagePage } from '../pages/record-page/record-page';
+//Cloudinary
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
+import { Cloudinary } from 'cloudinary-core';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -22,12 +25,25 @@ const cloudSettings: CloudSettings = {
 
 export const firebaseConfig ={
     //apiKey info for the testing database
-    apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
+    /*apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
     authDomain: "naturenet-testing.firebaseapp.com",
     databaseURL: "https://naturenet-testing.firebaseio.com",
     storageBucket: "naturenet-testing.appspot.com",
-    messagingSenderId: "37913246342"
+    messagingSenderId: "37913246342"*/
+    apiKey: "AIzaSyDMMSsdcktRuz9SE7RFteTnM_rjCkX08-c",
+    authDomain: "experiment-ad575.firebaseapp.com",
+    databaseURL: "https://experiment-ad575.firebaseio.com",
+    projectId: "experiment-ad575",
+    storageBucket: "experiment-ad575.appspot.com",
+    messagingSenderId: "835520618061"
 };
+
+//EXAMPLE config code
+export const cloudinaryConfig =({ 
+  cloud_name: 'dpcpagxba', 
+  api_key: '812163379489478', 
+  api_secret: 'svR_diqK8MhNrSP_2WuMY9-gS4E' 
+});
 
 @NgModule({
   declarations: [
@@ -43,7 +59,8 @@ export const firebaseConfig ={
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings),
      //Initailizing the firebase using theconst variable above
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dpcpagxba' } as CloudinaryConfiguration)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
