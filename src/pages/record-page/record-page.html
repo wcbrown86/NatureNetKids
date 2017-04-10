@@ -1,10 +1,14 @@
-
 <ion-header>
 
-    <ion-navbar color="record">
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only color="white" (click)="home()">
+      <ion-icon name="md-home"></ion-icon>
+    </button>
+        </ion-buttons>
 
         <ion-title>
-            Record
+            Nature Net Kids
         </ion-title>
 
         <ion-buttons end>
@@ -21,30 +25,30 @@
 
     <ion-list no-lines>
         <ion-item>
-          <button ion-button small full color="record" (click)="recordAudio()">
+            <button ion-button small full color="record" (click)="recordAudio()">
             <ion-icon name="md-mic"><br>Record</ion-icon>
           </button>
         </ion-item>
         <ion-item>
-          <button ion-button small full color="dark" (click)="stopRecord()">
+            <button ion-button small full color="dark" (click)="stopRecord()">
             <ion-icon name="md-mic"><br>Stop Recording</ion-icon>
           </button>
         </ion-item>
         <ion-item>
-          <button ion-button small color="light" class="buttonWidth" (click)="playAudio()">
+            <button ion-button small color="light" class="buttonWidth" (click)="playAudio()">
             Play
           </button>
 
-          <button ion-button small color="danger" class="buttonWidth" (click)="stopAudio()">
+            <button ion-button small color="danger" class="buttonWidth" (click)="stopAudio()">
             Stop
           </button>
         </ion-item>
         <ion-item>
-          <button ion-button small color="record" class="buttonWidth" (click)="cancel()">
+            <button ion-button small color="record" class="buttonWidth" (click)="cancel()">
           	Cancel
           </button>
 
-          <button ion-button small color="submit" class="buttonWidth" (click)="save()">
+            <button ion-button small color="submit" class="buttonWidth" (click)="save()">
           	Save
           </button>
         </ion-item>

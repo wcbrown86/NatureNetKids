@@ -6,12 +6,12 @@
 -->
 <ion-header>
 
-    <ion-navbar color="takePhoto">
-      <ion-buttons left>
-        	<button ion-button icon-only color="home" (click)="home()">
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only color="white" (click)="home()">
       <ion-icon name="md-home"></ion-icon>
     </button>
-    	</ion-buttons>
+        </ion-buttons>
 
         <ion-title color="White">
             Login
@@ -28,24 +28,24 @@
 
 <ion-content padding>
 
-	<h1>Login Test Page</h1>
+    <h1>Login Test Page</h1>
 
-<form [formGroup]="loginForm"  novalidate>
-    <ion-row>
-        <ion-item>
-            <ion-label for="email"></ion-label>
-            <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
-        </ion-item>
-    </ion-row>
-    <ion-row>
-        <ion-item>
-            <ion-label for="password"></ion-label>
-            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-        </ion-item>
-    </ion-row>
-      <ion-row>
-          <button (click)="login()" ion-button block>Log in</button>
-      </ion-row>
-  </form>
+    <form [formGroup]="loginForm" novalidate>
+        <ion-row>
+            <ion-item>
+                <ion-label for="email"></ion-label>
+                <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
+            </ion-item>
+        </ion-row>
+        <ion-row>
+            <ion-item>
+                <ion-label for="password"></ion-label>
+                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+            </ion-item>
+        </ion-row>
+        <ion-row>
+            <button (click)="login()" ion-button block>Log in</button>
+        </ion-row>
+    </form>
 
 </ion-content>

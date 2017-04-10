@@ -50,8 +50,10 @@ export class TakePhotoPage {
       console.log(err);
     });
 
+    /*
     let uploadPhoto = this.modalCtrl.create(UploadPhotoPage);
     uploadPhoto.present();
+    */
 
   }
 

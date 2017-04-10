@@ -16,6 +16,8 @@ import { RecordPagePage } from '../pages/record-page/record-page';
 //Cloudinary
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
 import { Cloudinary } from 'cloudinary-core';
+//Media plugin
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 const cloudSettings: CloudSettings = {
   'core': {
@@ -72,6 +74,6 @@ export const cloudinaryConfig =({
     LoginPage,
     RecordPagePage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, MediaPlugin]
 })
 export class AppModule {}

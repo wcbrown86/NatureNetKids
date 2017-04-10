@@ -44,7 +44,7 @@ private activities: FirebaseListObservable<any[]>;
   }
 
   home(){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.pop();
     //let goHome = this.modalCtrl.create(HomePage);
     //goHome.present();
 

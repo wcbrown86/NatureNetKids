@@ -1,12 +1,14 @@
 <ion-header>
 
-    <ion-navbar color="takePhoto">
-        <button ion-button icon-only color="home" (click)="home()">
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only color="white" (click)="home()">
       <ion-icon name="md-home"></ion-icon>
     </button>
+        </ion-buttons>
 
         <ion-title>
-            Take Photo
+            Nature Net Kids
         </ion-title>
 
         <ion-buttons end>
@@ -24,13 +26,13 @@
     <ion-list no-lines>
 
         <ion-item>
-            <button ion-button full large color="takePhoto" (click)="takePhoto()">
+            <button ion-button full large color="danger" (click)="takePhoto()">
         <ion-icon name="md-camera">Take a Picture</ion-icon>
       </button>
         </ion-item>
 
         <ion-item>
-            <button ion-button full large color="seePhoto" (click)="choosePhoto()">
+            <button ion-button full large color="light" (click)="choosePhoto()">
         <ion-icon name="md-images">Choose a Picture</ion-icon>
       </button>
         </ion-item>

@@ -1,14 +1,19 @@
 <ion-header>
-
-    <ion-navbar color="home">
-        <button ion-button icon-only color="light" (click)="settings()">
-      <ion-icon name="md-settings"></ion-icon>
+    <!-- -->
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <!-- -->
+            <button ion-button icon-only color="white" (click)="settings()">
+      <ion-icon name="settings"></ion-icon>
     </button>
+        </ion-buttons>
 
+        <!-- -->
         <ion-title color="White">
-            Home
+            Nature Net Kids
         </ion-title>
 
+        <!-- -->
         <ion-buttons end>
             <button ion-button icon-only color="white" (click)="help()">
         <ion-icon name="md-help"></ion-icon>
@@ -20,7 +25,7 @@
 
 
 <ion-content padding>
-
+    <!-- -->
     <ion-list no-lines>
         <ion-item>
             <ion-avatar item-left>
@@ -29,32 +34,32 @@
             <h1> Childs Name </h1>
             <p> Points </p>
         </ion-item>
-
+        <!-- -->
         <ion-item>
-            <button ion-button large full color="takePhoto" (click)="takePhotoPage()">
+            <button ion-button large full color="danger" (click)="takePhotoPage()">
         <ion-icon name="md-camera">
-          <br>Take a Picture
+          <br>Add Picture
           </ion-icon>
       </button>
         </ion-item>
-
+        <!-- -->
         <ion-item>
-            <button ion-button large full color="seePhoto" (click)="seeProjects()">
+            <button ion-button large full color="secondary" (click)="seeProjects()">
         <ion-icon name="md-images">
           <br>Look at a Picture
           </ion-icon>
       </button>
         </ion-item>
 
-       <!--Button for login page testing purposes.
-            Can be changed at anytime.-->
-       <ion-item>
+        <!--Button for login page testing purposes.
+            Can be changed at anytime.
+        <ion-item>
             <button ion-button large full color="goToLogin" (click)="goToLogin()">
         <ion-icon name="md-test">
           <br>Login Test Button
           </ion-icon>
       </button>
-        </ion-item>
+        </ion-item> -->
 
     </ion-list>
 

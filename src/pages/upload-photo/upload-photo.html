@@ -1,14 +1,14 @@
 <ion-header>
 
-    <ion-navbar color="danger">
+    <ion-navbar color="primary">
         <ion-buttons left>
-        <button ion-button icon-only color="home" (click)="home()">
+            <button ion-button icon-only color="white" (click)="home()">
       <ion-icon name="md-home"></ion-icon>
     </button>
         </ion-buttons>
 
         <ion-title>
-            Upload
+            Nature Net Kids
         </ion-title>
 
         <ion-buttons end>
@@ -25,7 +25,14 @@
 
     <ion-list no-lines>
         <ion-item>
-            <img src="{{passedPhoto}}">
+            <img hight="500" width="700" src="{{passedPhoto}}">
+        </ion-item>
+        <ion-item>
+            <ion-label>Project</ion-label>
+            <ion-select [(ngModel)]="project">
+                <ion-option value="NNK" selected="true">Nature Net Kids</ion-option>
+
+            </ion-select>
         </ion-item>
         <ion-item>
             <button ion-button small full color="record" (click)="record()">

@@ -1,7 +1,7 @@
 //Imports for Cordova and native Ionic fuctions
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
-import { MediaPlugin } from 'ionic-native';
+
 
 //Page Imports for Navigation
 import { HomePage } from '../home/home';
@@ -9,6 +9,7 @@ import { RecordPagePage } from '../record-page/record-page';
 //Firebase
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
+
 
 
 @Component({
@@ -19,6 +20,7 @@ export class UploadPhotoPage {
 
   //Variable to store passed photo. 
   public passedPhoto: string; 
+  project: string = "NNK";
 
   //Firebase array
   //public photoDesc: FirebaseListObservable<any>;
@@ -51,6 +53,8 @@ export class UploadPhotoPage {
     
     let recordInfo = this.modalCtrl.create(RecordPagePage);
     recordInfo.present();
+
+
 
   }
 
