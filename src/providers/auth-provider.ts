@@ -28,4 +28,24 @@ export class AuthProvider {
       });
     });
   }
+
+   registerUser(credentials: any) {
+    return Observable.create(observer => {
+      this.angFire.auth.createUser(credentials).then(authData => {
+        //authData.auth.updateProfile({displayName: credentials.displayName, photoURL: credentials.photoUrl}); //set name and photo
+        observer.next(authData);
+      }).catch(error => {
+        //console.log(error);
+        observer.error(error);
+      });
+    });
+  }
+ 
+  logout() {
+    this.angFire.auth.logout();
+  }
+ 
+  get currentUser():string{
+    return this.authState?this.authState.auth.email:'';
+  } 
 }
