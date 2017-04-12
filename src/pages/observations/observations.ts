@@ -9,7 +9,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 //Cloudinary
 import { CloudinaryModule } from '@cloudinary/angular';
-//import { Cloudinary } from 'cloudinary-core';
+import * as cloudinary from 'cloudinary';
 
 
 
