@@ -9,7 +9,7 @@ import { RecordPagePage } from '../record-page/record-page';
 //Firebase
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
-
+import * as cloudinary from 'cloudinary';
 
 
 @Component({
