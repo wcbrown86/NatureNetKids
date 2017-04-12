@@ -29,6 +29,17 @@
 <ion-content padding>
 
     <h1>Login Test Page</h1>
+    <!--Displays the email of the current loggedin user-->
+    <ion-row>
+        <ion-item>
+            <div *ngIf="auth.authState">{{auth.currentUser}}</div>
+        </ion-item>
+     </ion-row>
+
+    <button ion-button icon-right (click)="logout()">
+        <ion-icon name="logout"></ion-icon>
+            Logout
+    </button>
 
     <form [formGroup]="loginForm" novalidate>
         <ion-row>
