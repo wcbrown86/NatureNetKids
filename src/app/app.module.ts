@@ -13,9 +13,10 @@ import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
 import { ObservationsPage } from '../pages/observations/observations';
 import { LoginPage } from '../pages/login/login';
 import { RecordPagePage } from '../pages/record-page/record-page';
+import { SignupPage } from '../pages/signup/signup';
 //Cloudinary
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
-import { Cloudinary } from 'cloudinary-core';
+import * as cloudinary from 'cloudinary';
 //Media plugin
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
@@ -55,14 +56,15 @@ export const cloudinaryConfig =({
     UploadPhotoPage,
     ObservationsPage,
     LoginPage,
-    RecordPagePage
+    RecordPagePage,
+    SignupPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings),
      //Initailizing the firebase using theconst variable above
     AngularFireModule.initializeApp(firebaseConfig),
-    CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'dpcpagxba' } as CloudinaryConfiguration)
+    CloudinaryModule.forRoot({cloudinary}, { cloud_name: 'dpcpagxba' } as CloudinaryConfiguration)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -72,7 +74,8 @@ export const cloudinaryConfig =({
     UploadPhotoPage,
     ObservationsPage,
     LoginPage,
-    RecordPagePage
+    RecordPagePage,
+    SignupPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, MediaPlugin]
 })
