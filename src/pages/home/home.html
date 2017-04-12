@@ -25,7 +25,33 @@
 
 
 <ion-content padding>
-    <!-- -->
+    <!--Signup and Login test buttons -->
+        <!--Name of logedin person -->
+            <!--<ion-row>
+                <ion-item>
+                    <div *ngIf="auth.authState">current user is {{auth.currentUser}}</div>
+                </ion-item>
+            </ion-row>-->
+        <!-- Float the icon left -->
+            <button ion-button icon-left (click)="goToLogin()">
+                <ion-icon name="login"></ion-icon>
+                    Login
+            </button>
+        <!-- Float the icon center -->
+            <button ion-button icon-center (click)="goToSignup()">
+                <ion-icon name="signup"></ion-icon>
+                    Signup
+            </button>
+        <!-- Float the icon right-->
+             <button ion-button icon-right [navPush]="loginPage">
+                <ion-icon name="logout"></ion-icon>
+                    Logout
+            </button>
+            <!--<ion-row> 
+                <button (click)="logout()" ion-button block>Log out</button>
+            </ion-row>-->
+
+
     <ion-list no-lines>
         <ion-item>
             <ion-avatar item-left>
