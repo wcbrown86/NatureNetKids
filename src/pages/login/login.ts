@@ -39,7 +39,7 @@ export class LoginPage {
   login(): void { 
     if(this.loginForm.valid) {
         //console.log(this.email.value, this.password.value);
-        //alert('Implement authentication');
+        alert('Implement authentication '+this.email.value+", "+this.password.value);
         var credentials = ({email: this.email.value, password: this.password.value}); //Added next lines
           this.auth.loginWithEmail(credentials).subscribe(data => { 
             console.log(data);
@@ -52,20 +52,24 @@ export class LoginPage {
   			  homeModal.present();
 
             }
-             }, error=>{             //Added next lines for handling unknown users
+            }, error=>{             //Added next lines for handling unknown users
             console.log(error);
-            if (error.code == 'auth/user-not-found') 
+            if (error.code == 'auth/user-not-found')
             {
               alert('User not found');
-            } else if (error.code == 'auth/wrong-password')
-            	{
-            		alert('Incorrect Password');
-            	}
+            }
 
           });
     }
 
 }
+
+  logout(): void {
+        this.auth.logout();
+       let homeModal = this.modalCtrl.create(HomePage);
+       homeModal.present();
+
+  }
 
   home(){
 
