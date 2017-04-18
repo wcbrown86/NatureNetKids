@@ -28,17 +28,11 @@ const cloudSettings: CloudSettings = {
 
 export const firebaseConfig ={
     //apiKey info for the testing database
-    /*apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
+    apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
     authDomain: "naturenet-testing.firebaseapp.com",
     databaseURL: "https://naturenet-testing.firebaseio.com",
     storageBucket: "naturenet-testing.appspot.com",
-    messagingSenderId: "37913246342"*/
-    apiKey: "AIzaSyDMMSsdcktRuz9SE7RFteTnM_rjCkX08-c",
-    authDomain: "experiment-ad575.firebaseapp.com",
-    databaseURL: "https://experiment-ad575.firebaseio.com",
-    projectId: "experiment-ad575",
-    storageBucket: "experiment-ad575.appspot.com",
-    messagingSenderId: "835520618061"
+    messagingSenderId: "37913246342"
 };
 
 //EXAMPLE config code
