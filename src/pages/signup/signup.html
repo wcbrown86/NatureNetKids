@@ -5,13 +5,29 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <ion-navbar>
-    <ion-title>NatureNetKids</ion-title>
-  </ion-navbar>
+
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <button ion-button icon-only color="white" (click)="home()">
+      <ion-icon name="md-home"></ion-icon>
+    </button>
+        </ion-buttons>
+
+        <ion-title color="White">
+            Signup
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button icon-only color="white" (click)="help()">
+        <ion-icon name="md-help"></ion-icon>
+      </button>
+        </ion-buttons>
+    </ion-navbar>
+
 </ion-header>
+
 <ion-content padding>
-  <ion-title>Signup</ion-title>
-   
+  
 <form [formGroup]="signupForm" (ngSubmit)="submitSignup()" novalidate>
       <ion-row>
         <ion-item>
