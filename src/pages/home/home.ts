@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController , ModalController} from 'ionic-angular';
+import { NavController , ModalController, NavParams} from 'ionic-angular';
 //Pages
 import { TakePhotoPage } from '../take-photo/take-photo';
 import { ObservationsPage } from '../observations/observations';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
+//added AuthProvider
+import { AuthProvider } from '../../providers/auth-provider'; 
 
 @Component({
   selector: 'page-home',
@@ -14,7 +16,9 @@ export class HomePage {
   loginPage = LoginPage;  //Added login page for logging out
  
   constructor(public navCtrl: NavController,
-    public modalCtrl: ModalController) {}
+    public modalCtrl: ModalController, 
+    public navPrm: NavParams, 
+    public auth: AuthProvider) {}
   
     takePhotoPage(){
 
@@ -40,6 +44,11 @@ export class HomePage {
 
       let signupModal = this.modalCtrl.create(SignupPage);
       signupModal.present();
+    }
+
+     logout(): void {
+
+        this.auth.logout();
     }
 
 }
