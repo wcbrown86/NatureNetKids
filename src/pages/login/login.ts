@@ -6,6 +6,7 @@ import { AuthProvider } from '../../providers/auth-provider';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 //Pages
 import { HomePage } from '../home/home';
+import { SignupPage } from '../signup/signup';
 /*
   Generated class for the Login page.
 
@@ -65,18 +66,23 @@ export class LoginPage {
 }
 
   logout(): void {
-        this.auth.logout();
-       let homeModal = this.modalCtrl.create(HomePage);
-       homeModal.present();
 
+    this.auth.logout();
+    let homeModal = this.modalCtrl.create(HomePage);
+    homeModal.present();
+  }
+
+  goToSignup(){
+
+    let signupModal = this.modalCtrl.create(SignupPage);
+    signupModal.present();
   }
 
   home(){
 
-  let homeModal = this.modalCtrl.create(HomePage);
-  homeModal.present();
-
-}
+    let homeModal = this.modalCtrl.create(HomePage);
+    homeModal.present();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
