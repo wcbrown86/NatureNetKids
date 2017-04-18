@@ -23,16 +23,20 @@
 <ion-content padding>
 
     <h1> Observations Page </h1>
-    <p> TEST </p>
-    <div item-content *ngFor="let activity of activities | async">
-        <ion-item>
-            <p>Activity Comment:</p>
-            {{activity.name}}
-            <p>Activity Name:</p>
-            {{activity.image_url}}</ion-item>
 
-        <img src={{activity.image_url}}>
 
+    <div item-content *ngFor="let observation of observations | async">
+        <div *ngIf="observation.data.text!=''">
+            <ion-item color='secondary'>
+                <!--<p>Observation Text:</p>-->
+                <p align="top">{{observation.data.text}}</p>
+                <!--<p>Observation Image:</p>
+                {{observation.data.image}}-->
+            <!--</ion-item>-->
+                <img src={{observation.data.image}}>
+            </ion-item>
+            <br>
+        </div>
     </div>
 
 </ion-content>
