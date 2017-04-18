@@ -27,7 +27,7 @@ export class ObservationsPage {
 
 //The arraylist to hold all the activities in the test database
 //private observations: FirebaseListObservable<any[]>;
-private activities: FirebaseListObservable<any[]>;
+private observations: FirebaseListObservable<any[]>;
 
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
@@ -37,10 +37,7 @@ private activities: FirebaseListObservable<any[]>;
 
     //Goes to the firebase naturenet-testing database, gets all the activity entires
     //and puts them into the observations arraylist
-  	//this.observations = this.angFire.database.list('/observations');
-    //this.activities = this.angFire.database.list('/activities');
-    this.activities = this.angFire.database.list('/items');
-   
+    this.observations = this.angFire.database.list('/observations');
   }
 
   home(){
