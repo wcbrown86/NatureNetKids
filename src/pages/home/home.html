@@ -26,36 +26,36 @@
 
 <ion-content padding>
     <!--Signup and Login test buttons -->
-        <!--Name of logedin person -->
-        <!-- Float the icon left -->
-            <div *ngIf!="auth.authState">
-            <button ion-button full (click)="goToLogin()">
+    <!--Name of logedin person -->
+    <!-- Float the icon left -->
+    <div *ngIf!="auth.authState">
+        <button ion-button full (click)="goToLogin()">
                 <ion-icon name="login"></ion-icon>
                     Login
             </button>
-        </div>
-        <!-- Float the icon right-->
-        <div *ngIf="auth.authState">
-             <button ion-button full (click)="logout()">
+    </div>
+    <!-- Float the icon right-->
+    <div *ngIf="auth.authState">
+        <button ion-button full (click)="logout()">
                 <ion-icon name="logout"></ion-icon>
                     Logout
             </button>
-        </div>
+    </div>
 
 
     <ion-list no-lines>
-         <ion-item>
-                <ion-row>
-                    <div *ngIf="auth.authState">
-                        <ion-item>
-                            <ion-avatar item-left>
-                                <img>
-                            </ion-avatar>
-                            <h1>{{auth.currentUser}}</h1>
-                            <p> Points </p>
-                        </ion-item>
-                    </div>
-                </ion-row>
+        <ion-item>
+            <ion-row>
+                <div *ngIf="auth.authState">
+                    <ion-item>
+                        <ion-avatar item-left>
+                            <img>
+                        </ion-avatar>
+                        <h1>{{auth.currentUser}}</h1>
+                        <p> Points </p>
+                    </ion-item>
+                </div>
+            </ion-row>
         </ion-item>
         <!-- -->
         <ion-item>

@@ -1,7 +1,7 @@
 
 //Imports for ionic functions, and native plugins
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 //Page Navigation imports
@@ -13,10 +13,14 @@ import { HomePage } from '../home/home';
 })
 export class RecordPagePage {
 
+  //stopRecord: boolean = false; 
+  fileRecorded: MediaObject;
+  
 
-
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-  	public modalCtrl: ModalController, public alertCtrl: AlertController,
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+  	public viewCtrl: ViewController, 
+    public alertCtrl: AlertController,
     private media: MediaPlugin) {}
 
   //alert function to pass error messages to the user as needed. 
@@ -35,8 +39,7 @@ export class RecordPagePage {
 
   //Takes the use back to the home Page
   home() {
-    let goHome = this.modalCtrl.create(HomePage);
-    goHome.present();
+    this.navCtrl.popAll();
   }
 
   //Start record function, 
@@ -46,38 +49,32 @@ export class RecordPagePage {
       .then((file: MediaObject) => {
 
         file.startRecord();
-
-        setTimeout(function() {
-
-          file.stopRecord();
-          
-        }, 30000);
-
-        
-
+        this.fileRecorded = file;
       });
 
   }
 
+  stopRecord(){
+    this.fileRecorded.stopRecord();
+  }
+
   playAudio(){ 
+    this.fileRecorded.play()
+  }
 
-    this.media.create('record.wav')
-      .then((file: MediaObject) => {
-
-        file.play();
-
-      });
-    
-
+  stopAudio(){
+    this.fileRecorded.stop(); 
   }
 
   //Cancel button sends the user back to the upload photo page.
   cancel(){
-  	this.navCtrl.pop();
+    this.fileRecorded.release(); //Delets Recorded File
+    this.navCtrl.pop();
+
   }
 
   save(){
-
+    this.viewCtrl.dismiss(this.fileRecorded);
   }
 
 }

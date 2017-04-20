@@ -1,7 +1,7 @@
 //Imports for Cordova and native Ionic fuctions
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
-
+import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 //Page Imports for Navigation
 import { HomePage } from '../home/home';
@@ -29,6 +29,7 @@ export class UploadPhotoPage {
   //public photoDesc: FirebaseListObservable<any>;
   public fireRef: any;
   public obRef: any;
+  public recordedFile: MediaObject
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -60,6 +61,7 @@ export class UploadPhotoPage {
     
     let recordInfo = this.modalCtrl.create(RecordPagePage);
     recordInfo.present();
+    recordInfo.onDidDismiss(data=>this.recordedFile);
   }
 
 //Pop up window for image description entry
@@ -84,6 +86,7 @@ export class UploadPhotoPage {
   postPhoto(){
 
    cloudinary.uploader.upload(testImage, this.onComplete); //passedPhoto instead of testImage
+   this.recordedFile.release(); //deletes recorded file
   }
 
   setText(desc){
