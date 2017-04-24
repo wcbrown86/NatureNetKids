@@ -24,19 +24,34 @@
 
     <h1> Observations Page </h1>
 
+<ion-list>
+   <ion-card color='secondary' *ngFor="let subject of subjectsList">
+        <img src= {{subject.image_url}} height="200">
+       <ion-card-content>
+           <ion-card-title>
+                <p align='center' >About This Picture</p>
+           </ion-card-title>
+        <p>{{subject.text}}</p>
+       </ion-card-content>
+    </ion-card>
+ </ion-list>
 
-    <div item-content *ngFor="let observation of observations | async">
-        <div *ngIf="observation.data.text!=''">
+ <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
+   <!-- <div item-content *ngFor="let subject of subjectsList">
             <ion-item color='secondary'>
-                <!--<p>Observation Text:</p>-->
-                <p align="top">{{observation.data.text}}</p>
-                <!--<p>Observation Image:</p>
-                {{observation.data.image}}-->
-            <!--</ion-item>-->
-                <img src={{observation.data.image}}>
+                <p>Observation Text:</p>
+                <p align="top">{{subject.text}}</p>
+                <p>Observation Image:</p>
+               <img src= {{subject.image_url}} height='150' width='100'>
             </ion-item>
             <br>
-        </div>
     </div>
+    <ion-chip (click)="loadmoresubjects()">
+      <ion-icon name="pin"></ion-icon>
+      <ion-label>More..</ion-label>
+    </ion-chip>-->
 
 </ion-content>
