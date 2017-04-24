@@ -21,9 +21,13 @@ export class HomePage {
     public auth: AuthProvider) {}
   
     takePhotoPage(){
-
-      let photoModal = this.modalCtrl.create(TakePhotoPage);
-      photoModal.present();
+      if(this.auth.currentUser!=''){
+        let photoModal = this.modalCtrl.create(TakePhotoPage);
+        photoModal.present();
+      }else{
+        let loginModal = this.modalCtrl.create(LoginPage);
+        loginModal.present();
+      }
 
     }
 
