@@ -6,6 +6,7 @@ import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 import { AngularFireModule } from 'angularfire2';
 //Added AuthProvider
 import { AuthProvider} from '../providers/auth-provider';
+import { EventData } from '../providers/event-data';
 //Pages
 import { HomePage } from '../pages/home/home';
 import { TakePhotoPage } from '../pages/take-photo/take-photo';
@@ -37,9 +38,10 @@ export const firebaseConfig ={
 
 //EXAMPLE config code
 export const cloudinaryConfig =({ 
-  cloud_name: 'dpcpagxba', 
-  api_key: '812163379489478', 
+  cloud_name: 'dpcpagxba', //university-of-colorado
+  api_key: '812163379489478', //android-present for unsigned_1
   api_secret: 'svR_diqK8MhNrSP_2WuMY9-gS4E' 
+
 });
 
 @NgModule({
@@ -71,6 +73,6 @@ export const cloudinaryConfig =({
     RecordPagePage,
     SignupPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, MediaPlugin]
+  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, EventData, MediaPlugin]
 })
 export class AppModule {}
