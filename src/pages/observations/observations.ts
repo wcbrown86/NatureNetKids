@@ -4,6 +4,7 @@ import { Subject } from "rxjs/Subject";
 
 import { EventData } from '../../providers/event-data';
 import { HomePage } from '../home/home';
+import { DetailObservationPage } from '../detail-observation/detail-observation';
 
 //Angulrfire imports
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -32,9 +33,8 @@ export class ObservationsPage {
 //The arraylist to hold all the activities in the test database
 //private observations: FirebaseListObservable<any[]>;
 
- public b: number=5;
- public subjectsList: any[];
- public observersList: any[];
+ public b: number=0;
+ public observationsList: any[];
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
@@ -42,26 +42,12 @@ export class ObservationsPage {
     private angFire: AngularFire,
     private loadingCtrl: LoadingController,
     public eventData: EventData) {
-
-    //Goes to the firebase naturenet-testing database, gets all the activity entires
-    //and puts them into the observations arraylist
-    //observations = this.angFire.database.list('/observations');
-
-   this.eventData.getLimitedCategoryList(this.b).on('value', snapshot => {
-     let rawList10 = [];
-      snapshot.forEach(snap => {
-        //console.log("SNAP!! ",snap.val().data.text);
-        rawList10.unshift({
-          text: snap.val().data.text,
-          image_url: snap.val().data.image
-        });
-      });
-      this.subjectsList = rawList10;
-    });
+//This function loads five observations at a time from firebase
+    this.loadMoreObservations();
 
   }
 
-      loadMoreSubjects(){
+      loadMoreObservations(){
         this.b+=5
          this.eventData.getLimitedCategoryList(this.b).on('value', snapshot => {
           let rawList1 = [];
@@ -72,7 +58,7 @@ export class ObservationsPage {
               image_url: snap.val().data.image,
             });
           });
-          this.subjectsList = rawList1;
+          this.observationsList = rawList1;
         });
 
       }
@@ -92,13 +78,17 @@ export class ObservationsPage {
               image_url: snap.val().data.image
             });
           });
-          this.subjectsList = rawList1;*/
-          this.loadMoreSubjects();
+          this.observationsList = rawList1;*/
+          this.loadMoreObservations();
         //});
 
       //console.log('Async operation has ended');
       infiniteScroll.complete();
     }, 300);
+  }
+
+  viewSelectedObservation(observation){
+    this.navCtrl.push(DetailObservationPage, {observation: observation});
   }
 
   home(){
