@@ -15,6 +15,7 @@ import { ObservationsPage } from '../pages/observations/observations';
 import { LoginPage } from '../pages/login/login';
 import { RecordPagePage } from '../pages/record-page/record-page';
 import { SignupPage } from '../pages/signup/signup';
+import { DetailObservationPage } from '../pages/detail-observation/detail-observation';
 //Cloudinary
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
 import * as cloudinary from 'cloudinary';
@@ -53,7 +54,8 @@ export const cloudinaryConfig =({
     ObservationsPage,
     LoginPage,
     RecordPagePage,
-    SignupPage
+    SignupPage,
+    DetailObservationPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
@@ -71,7 +73,8 @@ export const cloudinaryConfig =({
     ObservationsPage,
     LoginPage,
     RecordPagePage,
-    SignupPage
+    SignupPage,
+    DetailObservationPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, EventData, MediaPlugin]
 })
