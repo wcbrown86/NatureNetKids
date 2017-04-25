@@ -25,13 +25,13 @@
     <h1> Observations Page </h1>
 
 <ion-list>
-   <ion-card color='secondary' *ngFor="let subject of subjectsList">
-        <img src= {{subject.image_url}} height="200">
+   <ion-card color='secondary' *ngFor="let observation of observationsList" (click)='viewSelectedObservation(observation)'>
+        <img src= {{observation.image_url}} height="200">
        <ion-card-content>
            <ion-card-title>
                 <p align='center' >About This Picture</p>
            </ion-card-title>
-        <p>{{subject.text}}</p>
+        <p>{{observation.text}}</p>
        </ion-card-content>
     </ion-card>
  </ion-list>
