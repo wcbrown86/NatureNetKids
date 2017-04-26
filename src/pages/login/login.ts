@@ -7,6 +7,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 //Pages
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
+import { HelpPage } from '../help/help';
 /*
   Generated class for the Login page.
 
@@ -86,6 +87,11 @@ export class LoginPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }

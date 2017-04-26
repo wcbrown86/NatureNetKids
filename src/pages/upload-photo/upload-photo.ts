@@ -6,6 +6,7 @@ import { MediaPlugin, MediaObject } from '@ionic-native/media';
 //Page Imports for Navigation
 import { HomePage } from '../home/home';
 import { RecordPagePage } from '../record-page/record-page';
+import { HelpPage } from '../help/help';
 //Firebase
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
@@ -118,6 +119,11 @@ export class UploadPhotoPage {
                 updated: myDate});
     }else{alert("Missing a field: text is "+textA+", imageURL is "+imageURL);}
 
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth-provider';
 import { HomePage } from '../home/home';
+import { HelpPage } from '../help/help';
 //Firebase import for uploading user sign id
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import * as firebase from 'firebase';
@@ -61,4 +62,9 @@ export class SignupPage {
   let homeModal = this.modalCtrl.create(HomePage);
   homeModal.present();
   } 
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
+  }
 }

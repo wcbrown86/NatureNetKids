@@ -1,11 +1,12 @@
 
 //Imports for ionic functions, and native plugins
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 //Page Navigation imports
 import { HomePage } from '../home/home';
+import { HelpPage } from '../help/help';
 
 @Component({
   selector: 'page-record-page',
@@ -21,7 +22,8 @@ export class RecordPagePage {
     public navParams: NavParams,
   	public viewCtrl: ViewController, 
     public alertCtrl: AlertController,
-    private media: MediaPlugin) {}
+    private media: MediaPlugin,
+    public modalCtrl: ModalController) {}
 
   //alert function to pass error messages to the user as needed. 
   showAlert(message){
@@ -75,6 +77,11 @@ export class RecordPagePage {
 
   save(){
     this.viewCtrl.dismiss(this.fileRecorded);
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }

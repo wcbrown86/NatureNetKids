@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
+import { HelpPage } from '../help/help';
 
 /*
   Generated class for the DetailObservation page.
@@ -28,6 +29,11 @@ export class DetailObservationPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailObservationPage');
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }

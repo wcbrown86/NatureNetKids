@@ -29,17 +29,11 @@
     <!--Name of logedin person -->
     <!-- Float the icon left -->
     <div *ngIf!="auth.authState">
-        <button ion-button full (click)="goToLogin()">
-                <ion-icon name="login"></ion-icon>
-                    Login
-            </button>
+
     </div>
     <!-- Float the icon right-->
     <div *ngIf="auth.authState">
-        <button ion-button full (click)="logout()">
-                <ion-icon name="logout"></ion-icon>
-                    Logout
-            </button>
+
     </div>
 
 

@@ -1,0 +1,42 @@
+<ion-header>
+    <!-- -->
+    <ion-navbar color="primary">
+        <ion-buttons left>
+            <!-- -->
+            <button ion-button icon-only color="white" (click)="close()">
+      <ion-icon name="md-home"></ion-icon>
+    </button>
+        </ion-buttons>
+
+        <!-- -->
+        <ion-title color="White">
+            Nature Net Kids
+        </ion-title>
+
+
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list no-lines>
+        <ion-item>
+            <button ion-button small full color="primary" (click)="goToLogin()">
+          <ion-icon name="logout">Login</ion-icon>
+        </button>
+        </ion-item>
+        <ion-item>
+            <button ion-button small full color="extra" (click)="logout()">
+                <ion-icon name="logout">Logout</ion-icon>
+            </button>
+        </ion-item>
+        <ion-item>
+            <button ion-button small full color="danger" (click)="close()"> 
+              Close Settings 
+            </button>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

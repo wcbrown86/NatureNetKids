@@ -7,6 +7,7 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 import { Camera } from 'ionic-native';
 import { HomePage } from '../home/home';
 import { UploadPhotoPage } from '../upload-photo/upload-photo';
+import { HelpPage } from '../help/help';
 
 
 @Component({
@@ -80,6 +81,11 @@ export class TakePhotoPage {
     });
 
 
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }

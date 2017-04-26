@@ -5,6 +5,8 @@ import { TakePhotoPage } from '../take-photo/take-photo';
 import { ObservationsPage } from '../observations/observations';
 import { LoginPage } from '../login/login';
 import { SignupPage } from '../signup/signup';
+import { SettingsPage } from '../settings/settings';
+import { HelpPage } from '../help/help';
 //added AuthProvider
 import { AuthProvider } from '../../providers/auth-provider'; 
 
@@ -13,7 +15,7 @@ import { AuthProvider } from '../../providers/auth-provider';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  loginPage = LoginPage;  //Added login page for logging out
+
  
   constructor(public navCtrl: NavController,
     public modalCtrl: ModalController, 
@@ -38,21 +40,20 @@ export class HomePage {
 
     } 
 
-    goToLogin(){
-
-      let loginModal = this.modalCtrl.create(LoginPage);
-      loginModal.present();
-    }
-
     goToSignup(){
 
       let signupModal = this.modalCtrl.create(SignupPage);
       signupModal.present();
     }
 
-     logout(): void {
+    settings(){
+      let settingsModal = this.modalCtrl.create(SettingsPage);
+      settingsModal.present()
+    }
 
-        this.auth.logout();
+    help(){
+      let helpModal = this.modalCtrl.create(HelpPage);
+      helpModal.present();
     }
 
 }

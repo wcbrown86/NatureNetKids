@@ -5,6 +5,7 @@ import { Subject } from "rxjs/Subject";
 import { EventData } from '../../providers/event-data';
 import { HomePage } from '../home/home';
 import { DetailObservationPage } from '../detail-observation/detail-observation';
+import { HelpPage } from '../help/help';
 
 //Angulrfire imports
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
@@ -100,6 +101,11 @@ export class ObservationsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ObservationsPage');
+  }
+
+  help() {
+    let helpModal = this.modalCtrl.create(HelpPage);
+    helpModal.present();
   }
 
 }
