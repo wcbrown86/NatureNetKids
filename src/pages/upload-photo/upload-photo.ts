@@ -56,7 +56,7 @@ export class UploadPhotoPage {
     goHome.present();
   }
 
-  //Function that persents the alret pop up that alows the user to record audio
+  //Function that persents the alert pop up that alows the user to record audio
   record() {
     
     let recordInfo = this.modalCtrl.create(RecordPagePage);
@@ -92,7 +92,7 @@ export class UploadPhotoPage {
   setText(desc){
     text = desc;
     //Used for testing text
-    alert("setText = "+text);
+    //alert("setText = "+text);
   }
 
   onComplete(result){
