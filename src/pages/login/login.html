@@ -1,24 +1,38 @@
 <!--
-  Generated template for the Login page.
+    Login page, this page is used to have the user login or create a account. 
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
+    TODO:
+          Add fucntion that will dynamiclly show the login page if the user is 
+          not logged in. that fucntion will not be added to this set of pages
+
 -->
 <ion-header>
 
+    <!-- Nave bar set up. Primary color is the main Nature Net Green. -->
     <ion-navbar color="primary">
+        <!-- Ionic button container the left modifier causes the button to 
+             not have a solid color background. Left Nav Bar Button -->
         <ion-buttons left>
+            <!-- Left Nav Bar Button tag with ionic premaid button icons, 
+                 when the button is clicked the home function is called 
+                 This sends the user back to the main screen.-->
             <button ion-button icon-only color="white" (click)="home()">
-      <ion-icon name="md-home"></ion-icon>
-    </button>
+                <!-- Ionic home button icon. -->
+                <ion-icon name="md-home"></ion-icon>
+            </button>
         </ion-buttons>
-
-        <ion-title color="White">
-            Login
+        <!-- Center title text all screens have the same title. -->
+        <ion-title>
+            Nature Net Kids
         </ion-title>
-
+        <!-- Right Nav Bar Button tag, end modifier keeps the button
+             from having the solid background. -->
         <ion-buttons end>
+            <!-- Right Nav Bar button set up for Ionic icon, when 
+                 clicked the screen displays a help page with discriptions
+                 of the options the user will have. -->
             <button ion-button icon-only color="white" (click)="help()">
+        <!-- Ionic icon for the help menu -->
         <ion-icon name="md-help"></ion-icon>
       </button>
         </ion-buttons>
@@ -26,29 +40,37 @@
 
 </ion-header>
 
+<!-- Padding that seperates the Navigation bar from the page content -->
 <ion-content padding>
     <!--Displays the email of the current loggedin user-->
     <form [formGroup]="loginForm" novalidate>
         <ion-row>
+            <!-- Form information for the user to input an email address for logging in-->
             <ion-item>
+                <!-- form label -->
                 <ion-label for="email"></ion-label>
+                <!-- form text box that restricts inputs -->
                 <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
             </ion-item>
         </ion-row>
         <ion-row>
+            <!-- Form information for the user to input a password-->
             <ion-item>
+                <!-- form label -->
                 <ion-label for="password"></ion-label>
+                <!-- form text box that takes in the password-->
                 <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
             </ion-item>
         </ion-row>
         <ion-row>
+            <!-- Button to submit the form information for logging in -->
             <button (click)="login()" ion-button block>Log in</button>
         </ion-row>
     </form>
     <br>
+    <!-- Ionic button to send the user to the signup page if they do not have an account -->
     <button ion-button icon-center (click)="goToSignup()">
-        <ion-icon name="signup"></ion-icon>
-            Signup
+        <ion-icon name="signup">Signup</ion-icon>
     </button>
 
 </ion-content>

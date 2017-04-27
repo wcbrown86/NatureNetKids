@@ -1,29 +1,31 @@
+//Default import from page creations
 import { Component } from '@angular/core';
+//imports for navigation control
 import { NavController, ModalController } from 'ionic-angular';
-//added AuthProvider
+//added AuthProvider used for login functions
 import { AuthProvider } from '../../providers/auth-provider'; 
 //Angular form builder
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-//Pages
+//Pages imported for page navigation
 import { HomePage } from '../home/home';
 import { SignupPage } from '../signup/signup';
 import { HelpPage } from '../help/help';
-/*
-  Generated class for the Login page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+
+
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
+
+  //global variables to store information 
   loginForm: FormGroup;
   email: AbstractControl;
   password: AbstractControl;
   error: any;
 
+  //constructor for variable injection needed for navigation and AuthProvider
   constructor(public navCtrl: NavController, 
   	public modalCtrl: ModalController,
   	private forumBld: FormBuilder,
@@ -66,30 +68,43 @@ export class LoginPage {
 
 }
 
+  //logout funciton that uses AuthProvider function to log the user out
   logout(): void {
 
+    //Function call to log the user out
     this.auth.logout();
+
+    //creates the model for the home page and presents the page.
     let homeModal = this.modalCtrl.create(HomePage);
     homeModal.present();
   }
 
+  //when called takes the user to the signup page
   goToSignup(){
 
+    //creates the modal and presents the page
     let signupModal = this.modalCtrl.create(SignupPage);
     signupModal.present();
   }
 
+  //When called function takes the user to the home page 
   home(){
 
+    //crates the modal and presents the page 
     let homeModal = this.modalCtrl.create(HomePage);
     homeModal.present();
   }
 
+  //Default function that logs the page load information 
+  //Not needed for the app to function, was left for error tracing
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
+  //when this funtion is called the user is taken to the help page
   help() {
+
+    //the modal is created and presented 
     let helpModal = this.modalCtrl.create(HelpPage);
     helpModal.present();
   }
