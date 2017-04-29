@@ -50,6 +50,9 @@ export class SettingsPage {
 
     //uses the authProvider logout funciton to log the user out.
     this.auth.logout();
+    alert('User logged out');
+    this.navCtrl.pop();
+    
   }
 
 }
