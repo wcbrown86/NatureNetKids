@@ -28,21 +28,26 @@
 
 <ion-content padding>
   
-<form [formGroup]="signupForm" (ngSubmit)="submitSignup()" novalidate>
+<form [formGroup]="signupForm" (ngSubmit)="submit()" novalidate>
       <ion-row>
         <ion-item>
             <ion-label for="email"></ion-label>
             <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
         </ion-item>
       </ion-row>
+      <p *ngIf="!email.valid && email.touched"><font color="red">Must use a valid email address</font></p>
+      <p *ngIf="email.hasError('required') && email.touched"><font color="red">Email is required</font></p>
       <ion-row>
         <ion-item>
             <ion-label for="password"></ion-label>
             <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
         </ion-item>
       </ion-row>
+      <p *ngIf="!password.valid && password.touched"><font color="red">Password must be at least 6 characters long</font></p>
+      <p *ngIf="password.hasError('required') && password.touched"><font color="red">Password is required</font></p>
+      <br>
       <ion-row>
-          <button ion-button type="submit" block>Sign up</button>
+          <button ion-button small full type="submit" color="secondary">Signup</button>
       </ion-row>
   </form>
  
