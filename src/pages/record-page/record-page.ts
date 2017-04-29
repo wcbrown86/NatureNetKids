@@ -47,12 +47,12 @@ export class RecordPagePage {
   //Start record function, 
   recordAudio(){
 
-    this.media.create('record.wav')
-      .then((file: MediaObject) => {
+   /*this.media.create('record.wav')
+   .then((file: MediaObject) => {
 
         file.startRecord();
         this.fileRecorded = file;
-      });
+      });*/
 
   }
 
