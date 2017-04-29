@@ -38,19 +38,19 @@
     <!-- Ionic table that contains all the page content for formatting-->
     <ion-list no-lines>
         <!-- Login button that take the user to the login page -->
-        <ion-item>
+        <ion-item *ngIf!="auth.authState">
             <!-- Button tag for login button, small modifier controls the size of 
                  the button, this CSS value is controled globally in the 
                  variables.scss file. When clicked calls the goToLogin function-->
             <button ion-button small full color="primary" (click)="goToLogin()">
-                <ion-icon name="logout">Login</ion-icon>
+                Login
             </button>
         </ion-item>
         <!-- Logout Button, logs the user out. -->
-        <ion-item>
+        <ion-item *ngIf="auth.authState">
             <!-- Button tag for logout button, When clicked calls the logout function-->
             <button ion-button small full color="extra" (click)="logout()">
-                <ion-icon name="logout">Logout</ion-icon>
+                Logout
             </button>
         </ion-item>
         <!-- Close settings button, this button closes the settings page taking the user back to the
