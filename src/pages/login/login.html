@@ -53,6 +53,7 @@
                 <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
             </ion-item>
         </ion-row>
+        <p *ngIf="email.hasError('required') && email.touched"><font color="red">Email is required</font></p>
         <ion-row>
             <!-- Form information for the user to input a password-->
             <ion-item>
@@ -62,15 +63,19 @@
                 <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
             </ion-item>
         </ion-row>
+        <p *ngIf="password.hasError('required') && password.touched"><font color="red">Password is required</font></p>
+        <br>
         <ion-row>
             <!-- Button to submit the form information for logging in -->
-            <button (click)="login()" ion-button block>Log in</button>
+            <button ion-button small full (click)="login()" color="primary">Login</button>
         </ion-row>
     </form>
     <br>
+    <p align='center'><strong>or</strong></p>
+    <br>
     <!-- Ionic button to send the user to the signup page if they do not have an account -->
-    <button ion-button icon-center (click)="goToSignup()">
-        <ion-icon name="signup">Signup</ion-icon>
+    <button ion-button small full (click)="goToSignup()" color="secondary">Signup
+        <!--<ion-icon name="signup">Sign up</ion-icon>-->
     </button>
 
 </ion-content>
