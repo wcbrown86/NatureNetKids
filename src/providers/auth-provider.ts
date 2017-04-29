@@ -21,7 +21,6 @@ export class AuthProvider {
         provider: AuthProviders.Password,
         method: AuthMethods.Password
       }).then((authData) => {
-        console.log(authData);
         observer.next(authData);
       }).catch((error) => {
         observer.error(error);
@@ -35,7 +34,6 @@ export class AuthProvider {
         //authData.auth.updateProfile({displayName: credentials.displayName, photoURL: credentials.photoUrl}); //set name and photo
         observer.next(authData);
       }).catch(error => {
-        //console.log(error);
         observer.error(error);
       });
     });
