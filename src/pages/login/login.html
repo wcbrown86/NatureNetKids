@@ -53,6 +53,7 @@
                 <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
             </ion-item>
         </ion-row>
+        <p *ngIf="!email.valid && email.touched"><font color="red">Must use a valid email address</font></p>
         <p *ngIf="email.hasError('required') && email.touched"><font color="red">Email is required</font></p>
         <ion-row>
             <!-- Form information for the user to input a password-->
@@ -63,6 +64,7 @@
                 <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
             </ion-item>
         </ion-row>
+        <p *ngIf="!password.valid && password.touched"><font color="red">Must be a valid password</font></p>
         <p *ngIf="password.hasError('required') && password.touched"><font color="red">Password is required</font></p>
         <br>
         <ion-row>
