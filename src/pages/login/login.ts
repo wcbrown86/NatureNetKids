@@ -33,7 +33,7 @@ export class LoginPage {
 
   	 this.loginForm = this.forumBld.group({  
             'email': ['', Validators.compose([Validators.required, Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)])],
-            'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
+            'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])]
         });
   
         this.email = this.loginForm.controls['email'];     
