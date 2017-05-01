@@ -1,30 +1,49 @@
+<!-- Observations page list the photo submitions for the Nature Net Kids 
+     Project, this could be changed to show all project instead of just Nature
+     Net Kids-->
 <ion-header>
 
+    <!-- Nave bar set up. Primary color is the main Nature Net Green. -->
     <ion-navbar color="primary">
+        <!-- Ionic button container the left modifier causes the button to 
+             not have a solid color background. Left Nav Bar Button -->
         <ion-buttons left>
+            <!-- Left Nav Bar Button tag with ionic premaid button icons, 
+                 when the button is clicked the home function is called 
+                 This sends the user back to the main screen.-->
             <button ion-button icon-only color="white" (click)="home()">
-      <ion-icon name="md-home"></ion-icon>
-    </button>
-
+                <!-- Ionic home button icon. -->
+                <ion-icon name="md-home"></ion-icon>
+            </button>
         </ion-buttons>
+        <!-- Center title text all screens have the same title. -->
         <ion-title>
             Nature Net Kids
         </ion-title>
-
+        <!-- Right Nav Bar Button tag, end modifier keeps the button
+             from having the solid background. -->
         <ion-buttons end>
+            <!-- Right Nav Bar button set up for Ionic icon, when 
+                 clicked the screen displays a help page with discriptions
+                 of the options the user will have. -->
             <button ion-button icon-only color="white" (click)="help()">
+        <!-- Ionic icon for the help menu -->
         <ion-icon name="md-help"></ion-icon>
       </button>
         </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-
+<!-- Padding the seperates the nav bar from the rest of the page -->
 <ion-content padding>
 
+    <!-- Header Title for the page -->
     <h1> Observations Page </h1>
 
+<!-- Ionic Table that holds all the rest of the content -->
 <ion-list>
+  <!-- Card content holds the photo and text information, this is repeated with the 
+       code from the infinite scroll section below. -->
    <ion-card color='secondary' *ngFor="let observation of observationsList" (click)='viewSelectedObservation(observation)'>
         <img src= {{observation.image_url}} height="200">
        <ion-card-content>

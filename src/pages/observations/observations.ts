@@ -1,8 +1,15 @@
+//Default import from the creation of the page
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { Subject } from "rxjs/Subject";
 
+//imports needed for navigation control
+//Loading Controller ...
+import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+
+//Add comments here 
+import { Subject } from "rxjs/Subject";
 import { EventData } from '../../providers/event-data';
+
+//Page imports needed for linked pages.
 import { HomePage } from '../home/home';
 import { DetailObservationPage } from '../detail-observation/detail-observation';
 import { HelpPage } from '../help/help';
@@ -16,14 +23,6 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { CloudinaryModule } from '@cloudinary/angular';
 import * as cloudinary from 'cloudinary';
 
-
-
-/*
-  Generated class for the Observations page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 
 @Component({
   selector: 'page-observations',
@@ -88,22 +87,30 @@ export class ObservationsPage {
     }, 300);
   }
 
+  //Funtion called in a photo is selected
   viewSelectedObservation(observation){
+    //adds the created page for the photo selected to the stack
+    //needed information is passed to the DetailObserbationPage
     this.navCtrl.push(DetailObservationPage, {observation: observation});
   }
 
+  //Function that is called when the home button is selected.
   home(){
+
+    //the page is popped since this page is only accessed from the home page
     this.navCtrl.pop();
-    //let goHome = this.modalCtrl.create(HomePage);
-    //goHome.present();
 
   }
 
+  //Page load log, not needed for the app to run, was left to help with errors
   ionViewDidLoad() {
     console.log('ionViewDidLoad ObservationsPage');
   }
 
+  //Help page is created when this function is called
   help() {
+
+    //Creates and presents the help page. 
     let helpModal = this.modalCtrl.create(HelpPage);
     helpModal.present();
   }

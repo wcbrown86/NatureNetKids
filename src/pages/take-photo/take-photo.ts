@@ -26,8 +26,10 @@ export class TakePhotoPage {
 
   //function to take the user back to the home page
   home(){
-    let goHome = this.modalCtrl.create(HomePage);
-    goHome.present();
+
+    //pops this page from the stack since this page is only used from the
+    //home page. 
+    this.navCtrl.pop();
   }
 
   //Fuction to let the user take a photo when the photo 
@@ -51,20 +53,14 @@ export class TakePhotoPage {
       console.log(err);
     });
 
-    /*
-    let uploadPhoto = this.modalCtrl.create(UploadPhotoPage);
-    uploadPhoto.present();
-    */
-
   }
 
-  //lets the user pick a photo from there gallery or photo
-  //library.
+  //lets the user pick a photo from there gallery or photo library
   choosePhoto(){
    //Camera function that pulls a photo from the device library.  
    
    Camera.getPicture({
-     //photo options
+     //photo options, more options avalible if needed
      sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
      destinationType: Camera.DestinationType.DATA_URL
     }).then((imageData) => {
@@ -77,13 +73,17 @@ export class TakePhotoPage {
       let uploadPhoto = this.modalCtrl.create(UploadPhotoPage, {photo: photoInfo});
       uploadPhoto.present();
      }, (err) => {
+       //Logs any errors the error can be sent to an alert if needed. 
       console.log(err);
     });
 
 
   }
 
+  //This function creates the help page 
   help() {
+
+    //creates the help page and presents it. 
     let helpModal = this.modalCtrl.create(HelpPage);
     helpModal.present();
   }
