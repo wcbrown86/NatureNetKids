@@ -71,13 +71,26 @@
                 <ion-icon name="md-mic"><br>Add Voice</ion-icon>
             </button>
         </ion-item>
-        <ion-item>
-            <!-- Button for adding text -->
-            <button ion-button small full color="addText" (click)="addText()">
-                <!-- Ionic icon and text -->
+        <!--Changes the addText button change when user adds text -->
+         <div *ngIf="text==null">
+            <ion-item>
+                <button ion-button small full color="addText" (click)="addText()">
                 <ion-icon name="md-text"><br>Add Text</ion-icon>
             </button>
-        </ion-item>
+            </ion-item>
+            </div>
+
+            <div *ngIf="text!=null">
+            <ion-item>
+                <button ion-button small full color="submit" (click)="addText()">
+                <ion-icon name="md-checkmark"><br>Add Text</ion-icon>
+            </button>
+            
+            <p>{{text}}</p>
+
+            </ion-item>
+        </div>
+
         <ion-item>
             <!-- Button to submit the information the user provided -->
             <button ion-button small full color="submit" (click)="postPhoto()">
