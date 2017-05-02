@@ -9,7 +9,7 @@ export class AuthProvider {
    
   constructor(private angFire: AngularFire) {
     this.angFire.auth.subscribe((state: FirebaseAuthState) => {
-      console.log('Firebase auth state:', state);
+      //console.log('Firebase auth state:', state);
       this.authState = state;
       this.onAuth.emit(state);
     });
