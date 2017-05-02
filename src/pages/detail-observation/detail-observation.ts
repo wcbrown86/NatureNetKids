@@ -27,8 +27,7 @@ export class DetailObservationPage {
   //Function tht is caled when the home button is selected from the Nav Bar.
   //Sends the user back to the main home page
   home(){
-    let goHome = this.modalCtrl.create(HomePage);
-    goHome.present();
+    this.navCtrl.setRoot(HomePage);
   }
 
   //Default function that is added when the page is made that logs the page load logs.
