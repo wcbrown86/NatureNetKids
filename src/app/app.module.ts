@@ -18,6 +18,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { SettingsPage } from '../pages/settings/settings';
 import { HelpPage } from '../pages/help/help';
 import { DetailObservationPage } from '../pages/detail-observation/detail-observation';
+import { AddTextPage } from '../pages/add-text/add-text';
 //Cloudinary
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
 import * as cloudinary from 'cloudinary';
@@ -35,16 +36,16 @@ export const firebaseConfig ={
     apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
     authDomain: "naturenet-testing.firebaseapp.com",
     databaseURL: "https://naturenet-testing.firebaseio.com",
+    projectId: "naturenet-testing",
     storageBucket: "naturenet-testing.appspot.com",
     messagingSenderId: "37913246342"
 };
 
 //EXAMPLE config code
-export const cloudinaryConfig =({ 
-  cloud_name: 'dpcpagxba', //university-of-colorado
-  api_key: '812163379489478', //android-present for unsigned_1
-  api_secret: 'svR_diqK8MhNrSP_2WuMY9-gS4E' 
-
+cloudinary.config({
+  cloud_name: 'testnet',
+  api_key: '812163379489478',
+  api_secret: 'svR_diqK8MhNrSP_2WuMY9-gS4E'
 });
 
 @NgModule({
@@ -59,14 +60,15 @@ export const cloudinaryConfig =({
     SignupPage,
     DetailObservationPage,
     SettingsPage,
-    HelpPage
+    HelpPage,
+    AddTextPage
   ],
   imports: [
     IonicModule.forRoot(MyApp),
     CloudModule.forRoot(cloudSettings),
      //Initailizing the firebase using theconst variable above
     AngularFireModule.initializeApp(firebaseConfig),
-    CloudinaryModule.forRoot({cloudinary}, { cloud_name: 'dpcpagxba' } as CloudinaryConfiguration)
+     CloudinaryModule.forRoot({cloudinary}, { cloud_name: 'testnet' } as CloudinaryConfiguration),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +82,8 @@ export const cloudinaryConfig =({
     SignupPage,
     DetailObservationPage,
     SettingsPage,
-    HelpPage
+    HelpPage,
+    AddTextPage
   ],
   providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, EventData, MediaPlugin]
 })
