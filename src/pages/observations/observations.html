@@ -24,7 +24,6 @@
 
     <h1> Observations Page </h1>
 
-<ion-list>
    <ion-card color='secondary' *ngFor="let observation of observationsList" (click)='viewSelectedObservation(observation)'>
         <img src= {{observation.image_url}} height="200">
        <ion-card-content>
@@ -34,10 +33,12 @@
         <p>{{observation.text}}</p>
        </ion-card-content>
     </ion-card>
- </ion-list>
 
  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+   <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+   </ion-infinite-scroll-content>
  </ion-infinite-scroll>
 
 </ion-content>
