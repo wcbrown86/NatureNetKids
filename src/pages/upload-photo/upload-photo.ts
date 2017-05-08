@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 //Imports for page navigation adn the alert controller which is used for popups
-import { NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 //Import for media conrtols. 
 import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
@@ -48,7 +48,8 @@ export class UploadPhotoPage {
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     angFire: AngularFire,
-    public auth: AuthProvider) {
+    public auth: AuthProvider,
+    public view: ViewController) {
     
     //stores the passed photo from the camera roll or a photo taken to show on the screen
     this.passedPhoto = navParams.get('photo');
@@ -57,21 +58,15 @@ export class UploadPhotoPage {
     //this.photoDesc = angFire.database.list('/items');
      //Gets the login name of the currrent user
     user = this.auth.currentUser;
+    uploadText = "";
 
-    //used for testing Cloudinary upload
-    this.testImage = "https://image.flaticon.com/teams/new/1-freepik.jpg";
-
-    //Set text from changing color of add text button
-    this.text = navParams.get('text');
-    //Set text for upload
-    uploadText = navParams.get('text'); 
   }
 
   //function to take the user back to the home page
   home() {
 
-    //seets the home page to the rootPage for presentation.
-    this.navCtrl.setRoot(HomePage);
+    //pops the pages off takes the user back to the home page
+    this.navCtrl.popAll();
   }
 
   //Function that persents the alert pop up that alows the user to record audio
@@ -79,43 +74,49 @@ export class UploadPhotoPage {
     
     //Creates the page and presents the page to the usr
     let recordInfo = this.modalCtrl.create(RecordPagePage);
-    recordInfo.present();
-
+    
     //looks for data passed back to the page from the page created
     //Makes a referance to the MediaObjet passed from the record page. 
-    recordInfo.onDidDismiss(data=>this.recordedFile); 
+    recordInfo.onDidDismiss((data) => {
+      this.recordedFile = data; 
+    })
+    recordInfo.present();
+     
   }
 
 //Pop up window for image description entry
   addText():void{
-    //Goes to the new addTextPage for user to add text
-    this.navCtrl.setRoot(AddTextPage);
 
-    /*let prompt = this.alertCtrl.create({
-      title: 'Picture Text',
-      message: 'What is your picture about?',
-      inputs:[{
-        name: 'description',
-        placeholder: 'type here'
-      }],buttons:[{
-        text: "Cancel",
-        handler: data => {console.log("cancel clicked");}
-      },
-      {
-        text: "Okay",
-        handler: data => {this.setText(data.description)}}]//this.setText(data.description)
-    });
-    prompt.present();*/
+    //Goes to the new addTextPage for user to add text
+    let addText = this.modalCtrl.create(AddTextPage);
+    
+    addText.onDidDismiss((data) =>
+      { 
+        this.text = data.userEntered;
+        uploadText = this.text;
+      
+      });
+    
+    addText.present();
+    uploadText = this.text;
+
+   
+
   }
 
   //Function called when the submit button is pressed
   // TODO: add recorded audio to the upload 
   postPhoto(){
 
-   cloudinary.uploader.upload(this.testImage, this.onComplete); //passedPhoto instead of testImage
+   cloudinary.uploader.upload(this.passedPhoto, this.onComplete); //passedPhoto instead of testImage
    
    //This is needed to release the recorded file for memory issues. 
-   //this.recordedFile.release(); //deletes recorded file
+   if(this.recordedFile != null){
+    this.recordedFile.release(); //deletes recorded file
+   }
+
+   this.navCtrl.popAll();
+   
   }
 
   onComplete(result){
@@ -126,6 +127,7 @@ export class UploadPhotoPage {
     let id='TestID';
     let observer= user;
     let site='kids app';
+
     
      let errorList: Array<string>=[];
 
@@ -147,6 +149,7 @@ export class UploadPhotoPage {
       //Displays whether upload was successful or not
       alert("Your observation has been uploaded successfully!");
     }else{alert(errorList);}
+
 
   }
 

@@ -89,7 +89,10 @@ export class RecordPagePage {
 
   //Cancel button sends the user back to the upload photo page.
   cancel(){
-    this.fileRecorded.release(); //Deletes Recorded File
+
+    if(this.fileRecorded != null){
+      this.fileRecorded.release(); //Deletes Recorded File
+    }
     this.navCtrl.pop(); //Removes this page from the stack
     //taking the user back to the Upload page.
 

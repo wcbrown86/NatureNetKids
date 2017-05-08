@@ -24,20 +24,20 @@
 
     <h1> Observations Page </h1>
 
-<ion-list>
-   <ion-card color='secondary' *ngFor="let observation of observationsList" (click)='viewSelectedObservation(observation)'>
-        <img src= {{observation.image_url}} height="200">
-       <ion-card-content>
-           <ion-card-title>
-                <p align='center' >About This Picture</p>
-           </ion-card-title>
-        <p>{{observation.text}}</p>
-       </ion-card-content>
-    </ion-card>
- </ion-list>
 
- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
-   <ion-infinite-scroll-content></ion-infinite-scroll-content>
- </ion-infinite-scroll>
+    <ion-card color='secondary' *ngFor="let observation of observationsList" (click)='viewSelectedObservation(observation)'>
+        <img src="{{observation.image_url}}" height="200">
+        <ion-card-content>
+            <ion-card-title>
+                <p align='center'>About This Picture</p>
+            </ion-card-title>
+            <p>{{observation.text}}</p>
+        </ion-card-content>
+    </ion-card>
+
+
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </ion-content>

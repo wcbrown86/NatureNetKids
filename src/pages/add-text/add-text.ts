@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 //Form
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 //Pages
@@ -22,18 +22,22 @@ export class AddTextPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     public modalCtrl: ModalController,
-  	private forumBld: FormBuilder) {}
+  	private forumBld: FormBuilder,
+    public view: ViewController) {}
 
     addText(){
         if(this.userText!=null) {
-          this.navCtrl.push(UploadPhotoPage, {text: this.userText});
+          let data = {
+            userEntered: this.userText
+          }
+          this.view.dismiss(data); 
         }else{
           alert("Must type in something to continue to add the observation or touch the cancel button to go back");
         }
     }
 
     cancelText(){
-      this.navCtrl.setRoot(UploadPhotoPage);
+      this.view.dismiss();
     }
 
     home() {

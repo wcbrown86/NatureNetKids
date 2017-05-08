@@ -6,7 +6,6 @@
      
      TODO: 
             make the project selection dynamic
-            change the text pop up to something better looking then using the alert box
 -->
 <ion-header>
 
@@ -59,6 +58,7 @@
             <ion-select [(ngModel)]="project">
                 <!-- selections can be added manualy or dynamicly -->
                 <ion-option value="NNK" selected="true">Nature Net Kids</ion-option>
+                <ion-option value="Other"> Other </ion-option>
             </ion-select>
         </ion-item>
         <ion-item>
@@ -72,21 +72,21 @@
             </button>
         </ion-item>
         <!--Changes the addText button change when user adds text -->
-         <div *ngIf="text==null">
+        <div *ngIf="text==null">
             <ion-item>
                 <button ion-button small full color="addText" (click)="addText()">
                 <ion-icon name="md-text"><br>Add Text</ion-icon>
             </button>
             </ion-item>
-            </div>
+        </div>
 
-            <div *ngIf="text!=null">
+        <div *ngIf="text!=null">
             <ion-item>
                 <button ion-button small full color="submit" (click)="addText()">
                 <ion-icon name="md-checkmark"><br>Add Text</ion-icon>
             </button>
-            
-            <p>{{text}}</p>
+
+                <p>{{text}}</p>
 
             </ion-item>
         </div>

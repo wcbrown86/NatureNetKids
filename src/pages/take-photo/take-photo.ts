@@ -59,6 +59,7 @@ export class TakePhotoPage {
   choosePhoto(){
    //Camera function that pulls a photo from the device library.  
    
+   
    Camera.getPicture({
      //photo options, more options avalible if needed
      sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
