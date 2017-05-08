@@ -32,7 +32,7 @@ var project: string = 'NNK';
 export class UploadPhotoPage {
 
   //Variable to store passed photo. 
-  public passedPhoto: string;
+  public passedPhoto: any;
   //Varible for the default selected project 
   //project: string = "NNK";
   public text: string;
@@ -54,8 +54,6 @@ export class UploadPhotoPage {
     //stores the passed photo from the camera roll or a photo taken to show on the screen
     this.passedPhoto = navParams.get('photo');
 
-    //Firebase references
-    //this.photoDesc = angFire.database.list('/items');
      //Gets the login name of the currrent user
     user = this.auth.currentUser;
     uploadText = "";
@@ -100,8 +98,6 @@ export class UploadPhotoPage {
     addText.present();
     uploadText = this.text;
 
-   
-
   }
 
   //Function called when the submit button is pressed
@@ -111,12 +107,13 @@ export class UploadPhotoPage {
    cloudinary.uploader.upload(this.passedPhoto, this.onComplete); //passedPhoto instead of testImage
    
    //This is needed to release the recorded file for memory issues. 
+
    if(this.recordedFile != null){
     this.recordedFile.release(); //deletes recorded file
    }
 
    this.navCtrl.popAll();
-   
+
   }
 
   onComplete(result){
