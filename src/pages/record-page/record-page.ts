@@ -52,7 +52,7 @@ export class RecordPagePage {
 
   //Start record function, this creates the file in the temp folder
   recordAudio(){
-
+   /* 
     //This creates teh media file labeled record.wav. 
    this.media.create('record.wav')
    .then((file: MediaObject) => {
@@ -63,7 +63,9 @@ export class RecordPagePage {
         //This is to be used to alow for global access to the funcitons of MediaObject
         this.fileRecorded = file;
       });
-
+      */
+     this.fileRecorded = this.media.create('record.wav');
+     this.fileRecorded.startRecord();
   }
 
   //Stop Recording fucntion

@@ -1,6 +1,9 @@
 {
   "name": "NatureNetKids",
-  "app_id": "aafebad1",
+  "integrations": {
+    "cordova": {}
+  },
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "pro_id": "aafebad1"
 }
