@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 //Form
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 //Pages
 import { HomePage } from '../home/home';
-import { UploadPhotoPage } from '../upload-photo/upload-photo';
 import { HelpPage } from '../help/help';
 
 

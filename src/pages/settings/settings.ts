@@ -7,7 +7,6 @@ import { NavController, ModalController, NavParams } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth-provider';
 //Page imports needed for navigation
 import { LoginPage } from '../login/login';
-import { HomePage } from '../home/home';
 
 @Component({
   selector: 'page-settings',

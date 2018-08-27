@@ -4,18 +4,17 @@ import { Component } from '@angular/core';
 //Imports for page navigation adn the alert controller which is used for popups
 import { NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 //Import for media conrtols. 
-import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { MediaObject } from '@ionic-native/media';
 
 //User Authentication for retrieving use name
 import { AuthProvider } from '../../providers/auth-provider'; 
 
 //Page Imports for Navigation to connected pages
-import { HomePage } from '../home/home';
 import { RecordPagePage } from '../record-page/record-page';
 import { HelpPage } from '../help/help';
 import { AddTextPage } from '../add-text/add-text';
 //Firebase
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire } from 'angularfire2';
 import * as firebase from 'firebase';
 //Cloudinary
 import * as cloudinary from 'cloudinary';

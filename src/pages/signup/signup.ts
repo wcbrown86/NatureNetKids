@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, ModalController } from 'ionic-angular';
 import { AuthProvider } from '../../providers/auth-provider';
 import { HomePage } from '../home/home';
 import { HelpPage } from '../help/help';
 //Firebase import for uploading user sign id
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import * as firebase from 'firebase';
+import { AngularFire } from 'angularfire2';
  
 @Component({
   selector: 'page-signup',

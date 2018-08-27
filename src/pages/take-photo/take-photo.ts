@@ -5,7 +5,6 @@ import { NavController, NavParams, ModalController } from 'ionic-angular';
 
 //Page Imports for Navigation
 import { Camera } from 'ionic-native';
-import { HomePage } from '../home/home';
 import { UploadPhotoPage } from '../upload-photo/upload-photo';
 import { HelpPage } from '../help/help';
 

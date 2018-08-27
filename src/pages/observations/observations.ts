@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
-import { Subject } from "rxjs/Subject";
 
 import { EventData } from '../../providers/event-data';
 import { HomePage } from '../home/home';
@@ -8,11 +7,7 @@ import { DetailObservationPage } from '../detail-observation/detail-observation'
 import { HelpPage } from '../help/help';
 
 //Angulrfire imports
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
-
-//Cloudinary
-import { CloudinaryModule } from '@cloudinary/angular';
-import * as cloudinary from 'cloudinary';
+import { AngularFire } from 'angularfire2';
 
 
 @Component({
