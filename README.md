@@ -25,7 +25,7 @@ Note ionic serve will not use native plugins in the browser. like the camera acc
 compile device files to upload the app to a device 
     ionic build ios
     ionic build android
-    ionic build windows
+    
 
 all the HTML, JS, and CSS is in src/pages
 all global CSS values and themeing is in src/theme/veriables.scss
