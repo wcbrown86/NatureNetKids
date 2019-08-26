@@ -2,6 +2,9 @@ This Nature Net Kids App used the Ionic framework. This framework alows the prog
 Node.js, and CSS to create a multi platform app. This app was created using Ionic 2, Ionic 3 was 
 released during the creation of this app and this might casue some issues with Ionic Native.
 
+** Currently the app is only setup to work with iPhone 8 or older. This section will be updated when
+the app is updated to work with current mobile devices. **
+
 How to install Ionic framework, see link for detailed instructions:
 1. Download and install Node.js
 2. install platform SDK and comand line tools for cordova (ex. Xcode, Android Studio)
@@ -18,9 +21,6 @@ Runs the app locally on a browser,
 Runs the app locally with the option to see how the app looks on multiple platforms
     ionic serve --lab
 Note ionic serve will not use native plugins in the browser. like the camera access. 
-
-create a new page 
-    ionic g page pageName
 
 compile device files to upload the app to a device 
     ionic build ios

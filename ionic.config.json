@@ -1,9 +1,11 @@
 {
-    "name": "Nature Net Kids",
-    "integrations": {
-        "cordova": {}
-    },
-    "v2": true,
-    "typescript": true,
-    "pro_id": "aafebad1"
+  "name": "Nature Net Kids",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "v2": true,
+  "typescript": true,
+  "pro_id": "aafebad1",
+  "id": "aafebad1"
 }
