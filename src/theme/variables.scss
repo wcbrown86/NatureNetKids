@@ -1,73 +1,85 @@
 // Ionic Variables and Theming. For more info, please see:
-// http://ionicframework.com/docs/v2/theming/
-$font-path: "../assets/fonts";
-@import "ionic.globals";
-// Shared Variables
-// --------------------------------------------------
-// To customize the look and feel of this app, you can override
-// the Sass variables found in Ionic's source scss files.
-// To view all the possible Ionic variables, see:
-// http://ionicframework.com/docs/v2/theming/overriding-ionic-variables/
-// Named Color Variables
-// --------------------------------------------------
-// Named colors makes it easy to reuse colors on various components.
-// It's highly recommended to change the default colors
-// to match your app's branding. Ionic uses a Sass map of
-// colors so you can add, rename and remove colors as needed.
-// The "primary" color is the only required color in the map.
-$colors: ( primary: #45b271, secondary: #4d6884, danger: #f59940, 
-            light: #3abecc, dark: #bb742e, addText: #3abecc, 
-            extra: #cb2f2a, record: #cb2f2a, submit: #21ab67,
-            defaultCard: #ffffff);
-// App iOS Variables
-// --------------------------------------------------
-// iOS only Sass variables can go here
-//Tool Bar Height global CSS control
-$toolbar-ios-height: 5rem;
-//Tool bar font size for Tool bar header
-$toolbar-ios-title-font-size: 2.5rem;
-//Back Ground color
-$background-ios-color: #ece9e4;
-//Back Ground color for ion-list items
-$list-ios-background-color: #ece9e4;
-//Sets the hight of the large buttons, main screen and main selection buttons
-$button-ios-large-height: 15rem;
-//Sets the hight for the small buttons, used on record page
-$button-ios-small-height: 7rem;
-// App Android Variables
-// --------------------------------------------------
-// Android only Sass variables can go here
-//Tool Bar Height global CSS control
-$toolbar-md-height: 6rem;
-//Tool bar font size for Tool bar header
-$toolbar-md-title-font-size: 2.5rem;
-//Back Ground color
-$background-md-color: #ece9e4;
-//Back Ground color for ion-list items
-$list-md-background-color: #ece9e4;
-//Sets the hight of the large buttons, main screen and main selection buttons
-$button-md-large-height: 15rem;
-//Sets the hight for the small buttons, used on record page
-$button-md-small-height: 7rem;
-// App Material Design Variables
-// --------------------------------------------------
-// Material Design only Sass variables can go here
-// App Windows Variables
-// --------------------------------------------------
-// Windows only Sass variables can go here
-// App Theme
-// --------------------------------------------------
-// Ionic apps can have different themes applied, which can
-// then be future customized. This import comes last
-// so that the above variables are used and Ionic's
-// default are overridden.
-@import "ionic.theme.default";
-// Ionicons
-// --------------------------------------------------
-// The premium icon font for Ionic. For more info, please see:
-// http://ionicframework.com/docs/v2/ionicons/
-@import "ionic.ionicons";
-// Fonts
-// --------------------------------------------------
-@import "roboto";
-@import "noto-sans";
+// https://ionicframework.com/docs/theming/basics
+
+/** Ionic CSS Variables **/
+:root {
+  /** Primary - Nature Green **/
+  --ion-color-primary: #45b271;
+  --ion-color-primary-rgb: 69, 178, 113;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3d9d63;
+  --ion-color-primary-tint: #58ba7f;
+
+  /** Secondary - Ocean Blue **/
+  --ion-color-secondary: #3abecc;
+  --ion-color-secondary-rgb: 58, 190, 204;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #33a7b4;
+  --ion-color-secondary-tint: #4ec5d1;
+
+  /** Tertiary - Warm Orange **/
+  --ion-color-tertiary: #f59940;
+  --ion-color-tertiary-rgb: 245, 153, 64;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #d88738;
+  --ion-color-tertiary-tint: #f6a353;
+
+  /** Success **/
+  --ion-color-success: #21ab67;
+  --ion-color-success-rgb: 33, 171, 103;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #1d965b;
+  --ion-color-success-tint: #37b376;
+
+  /** Warning **/
+  --ion-color-warning: #f59940;
+  --ion-color-warning-rgb: 245, 153, 64;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #d88738;
+  --ion-color-warning-tint: #f6a353;
+
+  /** Danger **/
+  --ion-color-danger: #cb2f2a;
+  --ion-color-danger-rgb: 203, 47, 42;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #b32925;
+  --ion-color-danger-tint: #d0443f;
+
+  /** Light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 245, 248;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /** Medium **/
+  --ion-color-medium: #92949c;
+  --ion-color-medium-rgb: 146, 148, 156;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #808289;
+  --ion-color-medium-tint: #9d9fa6;
+
+  /** Dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 36, 40;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** Background **/
+  --ion-background-color: #f8f9fa;
+  --ion-background-color-rgb: 248, 249, 250;
+
+  /** Text **/
+  --ion-text-color: #2d3748;
+  --ion-text-color-rgb: 45, 55, 72;
+}

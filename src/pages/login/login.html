@@ -1,83 +1,103 @@
-<!--
-    Login page, this page is used to have the user login or create a account. 
-
-    TODO:
-          Add fucntion that will dynamiclly show the login page if the user is 
-          not logged in. that fucntion will not be added to this set of pages
-
--->
-<ion-header>
-
-    <!-- Nave bar set up. Primary color is the main Nature Net Green. -->
-    <ion-navbar color="primary">
-        <!-- Ionic button container the left modifier causes the button to 
-             not have a solid color background. Left Nav Bar Button -->
-        <ion-buttons left>
-            <!-- Left Nav Bar Button tag with ionic premaid button icons, 
-                 when the button is clicked the home function is called 
-                 This sends the user back to the main screen.-->
-            <button ion-button icon-only color="white" (click)="home()">
-                <!-- Ionic home button icon. -->
-                <ion-icon name="md-home"></ion-icon>
-            </button>
-        </ion-buttons>
-        <!-- Center title text all screens have the same title. -->
-        <ion-title>
-            Nature Net Kids
-        </ion-title>
-        <!-- Right Nav Bar Button tag, end modifier keeps the button
-             from having the solid background. -->
-        <ion-buttons end>
-            <!-- Right Nav Bar button set up for Ionic icon, when 
-                 clicked the screen displays a help page with discriptions
-                 of the options the user will have. -->
-            <button ion-button icon-only color="white" (click)="help()">
-        <!-- Ionic icon for the help menu -->
-        <ion-icon name="md-help"></ion-icon>
-      </button>
-        </ion-buttons>
-    </ion-navbar>
-
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="home()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="help()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<!-- Padding that seperates the Navigation bar from the page content -->
-<ion-content padding>
-    <!--Displays the email of the current loggedin user-->
-    <form [formGroup]="loginForm" novalidate>
-        <ion-row>
-            <!-- Form information for the user to input an email address for logging in-->
-            <ion-item>
-                <!-- form label -->
-                <ion-label for="email"></ion-label>
-                <!-- form text box that restricts inputs -->
-                <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
-            </ion-item>
-        </ion-row>
-        <p *ngIf="!email.valid && email.touched"><font color="red">Must use a valid email address</font></p>
-        <p *ngIf="email.hasError('required') && email.touched"><font color="red">Email is required</font></p>
-        <ion-row>
-            <!-- Form information for the user to input a password-->
-            <ion-item>
-                <!-- form label -->
-                <ion-label for="password"></ion-label>
-                <!-- form text box that takes in the password-->
-                <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-            </ion-item>
-        </ion-row>
-        <p *ngIf="!password.valid && password.touched"><font color="red">Must be a valid password</font></p>
-        <p *ngIf="password.hasError('required') && password.touched"><font color="red">Password is required</font></p>
-        <br>
-        <ion-row>
-            <!-- Button to submit the form information for logging in -->
-            <button ion-button small full (click)="login()" color="primary">Login</button>
-        </ion-row>
-    </form>
-    <br>
-    <p align='center'><strong>or</strong></p>
-    <br>
-    <!-- Ionic button to send the user to the signup page if they do not have an account -->
-    <button ion-button small full (click)="goToSignup()" color="secondary">Signup
-        <!--<ion-icon name="signup">Sign up</ion-icon>-->
-    </button>
+<ion-content [fullscreen]="true" class="login-content">
+  <div class="login-wrapper">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <div class="logo-circle">
+        <ion-icon name="leaf" color="primary"></ion-icon>
+      </div>
+      <h1>Welcome Back!</h1>
+      <p>Login to continue your nature journey</p>
+    </div>
 
+    <!-- Login Form Card -->
+    <ion-card class="login-card">
+      <ion-card-content>
+        <form [formGroup]="loginForm" novalidate>
+          <!-- Email Input -->
+          <div class="input-group">
+            <ion-item lines="none" class="input-item" [class.item-has-error]="!email.valid && email.touched">
+              <ion-icon name="mail-outline" slot="start" color="medium"></ion-icon>
+              <ion-input 
+                type="email" 
+                placeholder="Email address" 
+                formControlName="email"
+                clearInput="true">
+              </ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="!email.valid && email.touched">
+              <ion-text color="danger" *ngIf="email.hasError('required')">
+                <small>Email is required</small>
+              </ion-text>
+              <ion-text color="danger" *ngIf="email.hasError('pattern') && !email.hasError('required')">
+                <small>Please enter a valid email</small>
+              </ion-text>
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="input-group">
+            <ion-item lines="none" class="input-item" [class.item-has-error]="!password.valid && password.touched">
+              <ion-icon name="lock-closed-outline" slot="start" color="medium"></ion-icon>
+              <ion-input 
+                type="password" 
+                placeholder="Password" 
+                formControlName="password"
+                clearInput="true">
+              </ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="!password.valid && password.touched">
+              <ion-text color="danger" *ngIf="password.hasError('required')">
+                <small>Password is required</small>
+              </ion-text>
+              <ion-text color="danger" *ngIf="password.hasError('minlength') && !password.hasError('required')">
+                <small>Password must be at least 6 characters</small>
+              </ion-text>
+            </div>
+          </div>
+
+          <!-- Login Button -->
+          <ion-button 
+            expand="block" 
+            (click)="login()" 
+            color="primary"
+            class="login-button">
+            <ion-icon name="log-in-outline" slot="start"></ion-icon>
+            Login
+          </ion-button>
+        </form>
+
+        <!-- Divider -->
+        <div class="divider">
+          <span>or</span>
+        </div>
+
+        <!-- Signup Button -->
+        <ion-button 
+          expand="block" 
+          (click)="goToSignup()" 
+          fill="outline"
+          color="secondary"
+          class="signup-button">
+          <ion-icon name="person-add-outline" slot="start"></ion-icon>
+          Create Account
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

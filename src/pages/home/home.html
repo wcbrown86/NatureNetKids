@@ -1,107 +1,93 @@
-<!-- Home page, this is the main page that is displayed once the use is login,
-     this page will show the user that is login. give the user access to the 
-     settings page for login and logout. 
-     
-     TODO: 
-            create avitar system to show the user created avitar
-            add points to the user imformation displayed 
- -->
-<ion-header>
-
-    <!-- Nave bar set up. Primary color is the main Nature Net Green. -->
-    <ion-navbar color="primary">
-        <!-- Ionic button container the left modifier causes the button to 
-             not have a solid color background. Left Nav Bar Button -->
-        <ion-buttons left>
-            <!-- Left Nav Bar Button tag with ionic premaid button icons, 
-                 when the button is clicked the home function is called 
-                 This sends the user back to the main screen.-->
-            <button ion-button icon-only color="white" (click)="settings()">
-                <!-- Ionic home button icon. -->
-                <ion-icon name="md-settings"></ion-icon>
-            </button>
-        </ion-buttons>
-        <!-- Center title text all screens have the same title. -->
-        <ion-title>
-            Nature Net Kids
-        </ion-title>
-        <!-- Right Nav Bar Button tag, end modifier keeps the button
-             from having the solid background. -->
-        <ion-buttons end>
-            <!-- Right Nav Bar button set up for Ionic icon, when 
-                 clicked the screen displays a help page with discriptions
-                 of the options the user will have. -->
-            <button ion-button icon-only color="white" (click)="help()">
-        <!-- Ionic icon for the help menu -->
-        <ion-icon name="md-help"></ion-icon>
-      </button>
-        </ion-buttons>
-    </ion-navbar>
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="settings()">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <div class="title-content">
+        <ion-icon name="leaf-outline" class="logo-icon"></ion-icon>
+        Nature Net Kids
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="help()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+<ion-content [fullscreen]="true" class="home-content">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Nature Net Kids</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content padding>
+  <div class="content-wrapper">
+    <!-- User Profile Card -->
+    <ion-card class="profile-card" *ngIf="auth.currentUser">
+      <ion-card-content>
+        <div class="profile-header">
+          <ion-avatar class="profile-avatar">
+            <div class="avatar-placeholder">
+              <ion-icon name="person"></ion-icon>
+            </div>
+          </ion-avatar>
+          <div class="profile-info">
+            <h2 class="user-name">{{auth.currentUser}}</h2>
+            <div class="user-stats">
+              <ion-chip color="success">
+                <ion-icon name="star"></ion-icon>
+                <ion-label>0 Points</ion-label>
+              </ion-chip>
+              <ion-chip color="secondary">
+                <ion-icon name="images"></ion-icon>
+                <ion-label>0 Photos</ion-label>
+              </ion-chip>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
-    <!--Name of logedin person -->
-    <!-- Float the icon left -->
-    <div *ngIf!="auth.authState">
+    <!-- Welcome Card for non-logged in users -->
+    <ion-card class="welcome-card" *ngIf="!auth.currentUser">
+      <ion-card-content>
+        <div class="welcome-content">
+          <ion-icon name="leaf" color="primary" class="welcome-icon"></ion-icon>
+          <h2>Welcome to Nature Net Kids!</h2>
+          <p>Explore nature and share your discoveries</p>
+          <ion-button expand="block" (click)="goToSignup()" color="primary">
+            Get Started
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
+    <!-- Action Cards -->
+    <div class="action-cards">
+      <ion-card class="action-card camera-card" button (click)="takePhotoPage()">
+        <ion-card-content>
+          <div class="card-icon-wrapper">
+            <ion-icon name="camera" color="primary"></ion-icon>
+          </div>
+          <h3>Add Picture</h3>
+          <p>Capture and share nature observations</p>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="action-card gallery-card" button (click)="seeProjects()">
+        <ion-card-content>
+          <div class="card-icon-wrapper">
+            <ion-icon name="images" color="secondary"></ion-icon>
+          </div>
+          <h3>View Gallery</h3>
+          <p>Browse nature discoveries</p>
+        </ion-card-content>
+      </ion-card>
     </div>
-    <!-- Float the icon right-->
-    <div *ngIf="auth.authState">
-
-    </div>
-
-    <!-- Ionic Table that holds the all of the page contents for formating -->
-    <ion-list no-lines>
-        <!-- Ionic Avatar tag that generates the contaners for the user information
-             as well as the play to display the avatar icon, and the points. -->
-        <ion-item>
-            <ion-row>
-                <!-- -->
-                <div *ngIf="auth.authState">
-                    <ion-item>
-                        <!-- Avatar information -->
-                        <ion-avatar item-left>
-                            <!-- Avatar thumbnail displays here-->
-                            <img>
-                        </ion-avatar>
-                        <!-- shows the name of the current user logged in -->
-                        <h1>{{auth.currentUser}}</h1>
-                        <!-- Displayes points the user has earned -->
-                        <p> Points </p>
-                    </ion-item>
-                </div>
-            </ion-row>
-        </ion-item>
-        <!-- button to take the user to the add an observation -->
-        <ion-item>
-            <!-- Ionic button for adding a photo, large modifier adds the CSS that
-                 controls the height of the button, see variables.scss for this 
-                 variable. Full modifier controls the width of the button, this takes
-                 the button to the full width of the table. Color variable pulled 
-                 from the themeing in variables.scss. when clicked it loads the 
-                 take photos page.  -->
-            <button ion-button large full color="danger" (click)="takePhotoPage()">
-                <!-- Ionic button image -->
-                <ion-icon name="md-camera">
-                    <!-- formatting for the text to be below the image-->
-                    <br>Add Picture
-                </ion-icon>
-            </button>
-        </ion-item>
-        <!-- button that takes the user to the observations page. -->
-        <ion-item>
-            <!-- Ionic buttom that takes the user to the observations page 
-                 when clicked. -->
-            <button ion-button large full color="secondary" (click)="seeProjects()">
-                <!-- Ionic buttom image -->
-                <ion-icon name="md-images">
-                    <!-- formatting for the text to be below the image. -->
-                    <br>Look at a Picture
-                </ion-icon>
-            </button>
-        </ion-item>
-    </ion-list>
-
+  </div>
 </ion-content>

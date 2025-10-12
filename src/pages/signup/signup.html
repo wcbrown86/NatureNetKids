@@ -1,54 +1,95 @@
-<!--
-  Generated template for the Signup page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
-
-    <ion-navbar color="primary">
-        <ion-buttons left>
-            <button ion-button icon-only color="white" (click)="home()">
-      <ion-icon name="md-home"></ion-icon>
-    </button>
-        </ion-buttons>
-
-        <ion-title color="White">
-            Signup
-        </ion-title>
-
-        <ion-buttons end>
-            <button ion-button icon-only color="white" (click)="help()">
-        <ion-icon name="md-help"></ion-icon>
-      </button>
-        </ion-buttons>
-    </ion-navbar>
-
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button (click)="home()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Sign Up</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="help()">
+        <ion-icon name="help-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  
-<form [formGroup]="signupForm" (ngSubmit)="submit()" novalidate>
-      <ion-row>
-        <ion-item>
-            <ion-label for="email"></ion-label>
-            <ion-input type="email" value="" placeholder="Email" formControlName="email"></ion-input>
-        </ion-item>
-      </ion-row>
-      <p *ngIf="!email.valid && email.touched"><font color="red">Must use a valid email address</font></p>
-      <p *ngIf="email.hasError('required') && email.touched"><font color="red">Email is required</font></p>
-      <ion-row>
-        <ion-item>
-            <ion-label for="password"></ion-label>
-            <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-        </ion-item>
-      </ion-row>
-      <p *ngIf="!password.valid && password.touched"><font color="red">Password must be at least 6 characters long</font></p>
-      <p *ngIf="password.hasError('required') && password.touched"><font color="red">Password is required</font></p>
-      <br>
-      <ion-row>
-          <button ion-button small full type="submit" color="secondary">Signup</button>
-      </ion-row>
-  </form>
- 
+<ion-content [fullscreen]="true" class="signup-content">
+  <div class="signup-wrapper">
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <div class="logo-circle">
+        <ion-icon name="leaf" color="primary"></ion-icon>
+      </div>
+      <h1>Join Nature Net Kids!</h1>
+      <p>Start your nature exploration journey today</p>
+    </div>
+
+    <!-- Signup Form Card -->
+    <ion-card class="signup-card">
+      <ion-card-content>
+        <form [formGroup]="signupForm" (ngSubmit)="submit()" novalidate>
+          <!-- Email Input -->
+          <div class="input-group">
+            <ion-item lines="none" class="input-item" [class.item-has-error]="!email.valid && email.touched">
+              <ion-icon name="mail-outline" slot="start" color="medium"></ion-icon>
+              <ion-input 
+                type="email" 
+                placeholder="Email address" 
+                formControlName="email"
+                clearInput="true">
+              </ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="!email.valid && email.touched">
+              <ion-text color="danger" *ngIf="email.hasError('required')">
+                <small>Email is required</small>
+              </ion-text>
+              <ion-text color="danger" *ngIf="email.hasError('pattern') && !email.hasError('required')">
+                <small>Please enter a valid email</small>
+              </ion-text>
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="input-group">
+            <ion-item lines="none" class="input-item" [class.item-has-error]="!password.valid && password.touched">
+              <ion-icon name="lock-closed-outline" slot="start" color="medium"></ion-icon>
+              <ion-input 
+                type="password" 
+                placeholder="Password (min. 6 characters)" 
+                formControlName="password"
+                clearInput="true">
+              </ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="!password.valid && password.touched">
+              <ion-text color="danger" *ngIf="password.hasError('required')">
+                <small>Password is required</small>
+              </ion-text>
+              <ion-text color="danger" *ngIf="password.hasError('minlength') && !password.hasError('required')">
+                <small>Password must be at least 6 characters</small>
+              </ion-text>
+            </div>
+          </div>
+
+          <!-- Signup Button -->
+          <ion-button 
+            expand="block" 
+            type="submit" 
+            color="secondary"
+            class="signup-button">
+            <ion-icon name="person-add-outline" slot="start"></ion-icon>
+            Create Account
+          </ion-button>
+        </form>
+
+        <!-- Info Text -->
+        <div class="info-text">
+          <p>
+            <ion-icon name="shield-checkmark-outline"></ion-icon>
+            By signing up, you agree to explore nature responsibly
+          </p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

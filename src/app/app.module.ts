@@ -1,90 +1,56 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-import { MyApp } from './app.component';
-//Angularfire module imports
-import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
-import { AngularFireModule } from 'angularfire2';
-//Added AuthProvider
-import { AuthProvider} from '../providers/auth-provider';
-import { EventData } from '../providers/event-data';
-//Pages
-import { HomePage } from '../pages/home/home';
-import { TakePhotoPage } from '../pages/take-photo/take-photo';
-import { UploadPhotoPage } from '../pages/upload-photo/upload-photo';
-import { ObservationsPage } from '../pages/observations/observations';
-import { LoginPage } from '../pages/login/login';
-import { RecordPagePage } from '../pages/record-page/record-page';
-import { SignupPage } from '../pages/signup/signup';
-import { SettingsPage } from '../pages/settings/settings';
-import { HelpPage } from '../pages/help/help';
-import { DetailObservationPage } from '../pages/detail-observation/detail-observation';
-import { AddTextPage } from '../pages/add-text/add-text';
-//Cloudinary
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+// Firebase imports
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideStorage, getStorage } from '@angular/fire/storage';
+
+// Cloudinary
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular';
-import * as cloudinary from 'cloudinary';
-//Media plugin
-import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { Cloudinary } from 'cloudinary-core';
 
-const cloudSettings: CloudSettings = {
-  'core': {
-    'app_id': 'aafebad1'
-  }
-};
+// Providers
+import { AuthProvider } from '../providers/auth-provider';
+import { EventData } from '../providers/event-data';
 
-export const firebaseConfig ={
-    //apiKey info for the testing database
-    apiKey: "AIzaSyChM0Tmrj_K_SJd4IqQBlOfzDC61xMFguU",
-    authDomain: "naturenet-testing.firebaseapp.com",
-    databaseURL: "https://naturenet-testing.firebaseio.com",
-    projectId: "naturenet-testing",
-    storageBucket: "naturenet-testing.appspot.com",
-    messagingSenderId: "37913246342"
-};
+// Storage
+import { IonicStorageModule } from '@ionic/storage-angular';
 
-//EXAMPLE config code
-cloudinary.config({
-  cloud_name: 'testnet',
-  api_key: '812163379489478',
-  api_secret: 'svR_diqK8MhNrSP_2WuMY9-gS4E'
+// Environment
+import { environment } from '../environments/environment';
+
+export const firebaseConfig = environment.firebase;
+
+export const cloudinaryLib = new Cloudinary({
+  cloud_name: environment.cloudinary.cloudName,
+  api_key: environment.cloudinary.apiKey,
+  secure: true
 });
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage,
-    TakePhotoPage,
-    UploadPhotoPage,
-    ObservationsPage,
-    LoginPage,
-    RecordPagePage,
-    SignupPage,
-    DetailObservationPage,
-    SettingsPage,
-    HelpPage,
-    AddTextPage
-  ],
+  declarations: [AppComponent],
   imports: [
-    IonicModule.forRoot(MyApp),
-    CloudModule.forRoot(cloudSettings),
-     //Initailizing the firebase using theconst variable above
-    AngularFireModule.initializeApp(firebaseConfig),
-     CloudinaryModule.forRoot({cloudinary}, { cloud_name: 'testnet' } as CloudinaryConfiguration),
+    BrowserModule,
+    IonicModule.forRoot(),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    CloudinaryModule.forRoot(cloudinaryLib, { cloud_name: 'testnet' } as CloudinaryConfiguration)
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    TakePhotoPage,
-    UploadPhotoPage,
-    ObservationsPage,
-    LoginPage,
-    RecordPagePage,
-    SignupPage,
-    DetailObservationPage,
-    SettingsPage,
-    HelpPage,
-    AddTextPage
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideStorage(() => getStorage()),
+    AuthProvider,
+    EventData
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}, AuthProvider, EventData, MediaPlugin]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

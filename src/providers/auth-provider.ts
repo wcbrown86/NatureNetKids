@@ -1,49 +1,38 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { AuthProviders, AngularFire, FirebaseAuthState, AuthMethods } from 'angularfire2';
-import { Observable } from "rxjs/Observable";
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, User, user } from '@angular/fire/auth';
+import { Observable, from } from 'rxjs';
  
 @Injectable()
 export class AuthProvider {
-  private authState: FirebaseAuthState;
-  public onAuth: EventEmitter<FirebaseAuthState> = new EventEmitter();
+  private authState: User | null = null;
+  public onAuth: EventEmitter<User | null> = new EventEmitter();
+  public user$: Observable<User | null>;
    
-  constructor(private angFire: AngularFire) {
-    this.angFire.auth.subscribe((state: FirebaseAuthState) => {
-      //console.log('Firebase auth state:', state);
-      this.authState = state;
-      this.onAuth.emit(state);
+  constructor(private auth: Auth) {
+    this.user$ = user(this.auth);
+    this.user$.subscribe((authUser: User | null) => {
+      this.authState = authUser;
+      this.onAuth.emit(authUser);
     });
   }
    
-  loginWithEmail(credentials) {
-    return Observable.create(observer => {
-      this.angFire.auth.login(credentials, {
-        provider: AuthProviders.Password,
-        method: AuthMethods.Password
-      }).then((authData) => {
-        observer.next(authData);
-      }).catch((error) => {
-        observer.error(error);
-      });
-    });
+  loginWithEmail(credentials: { email: string; password: string }): Observable<any> {
+    return from(
+      signInWithEmailAndPassword(this.auth, credentials.email, credentials.password)
+    );
   }
 
-   registerUser(credentials: any) {
-    return Observable.create(observer => {
-      this.angFire.auth.createUser(credentials).then(authData => {
-        //authData.auth.updateProfile({displayName: credentials.displayName, photoURL: credentials.photoUrl}); //set name and photo
-        observer.next(authData);
-      }).catch(error => {
-        observer.error(error);
-      });
-    });
+  registerUser(credentials: { email: string; password: string }): Observable<any> {
+    return from(
+      createUserWithEmailAndPassword(this.auth, credentials.email, credentials.password)
+    );
   }
  
-  logout() {
-    this.angFire.auth.logout();
+  logout(): Promise<void> {
+    return signOut(this.auth);
   }
  
-  get currentUser():string{
-    return this.authState?this.authState.auth.email:'';
+  get currentUser(): string {
+    return this.authState ? this.authState.email || '' : '';
   } 
 }

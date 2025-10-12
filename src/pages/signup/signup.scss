@@ -1,3 +1,131 @@
 page-signup {
+  .signup-content {
+    --background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
 
+  .signup-wrapper {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 24px 16px;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-section {
+    text-align: center;
+    margin-bottom: 32px;
+
+    .logo-circle {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 20px;
+      background: linear-gradient(135deg, var(--ion-color-secondary), var(--ion-color-primary));
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(var(--ion-color-secondary-rgb), 0.3);
+
+      ion-icon {
+        font-size: 48px;
+        --color: white;
+      }
+    }
+
+    h1 {
+      margin: 0 0 8px 0;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ion-text-color);
+    }
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  .signup-card {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border-radius: 20px;
+    margin: 0;
+
+    ion-card-content {
+      padding: 28px 24px;
+    }
+  }
+
+  .input-group {
+    margin-bottom: 20px;
+
+    .input-item {
+      --background: #f1f3f5;
+      --border-radius: 12px;
+      --padding-start: 16px;
+      --padding-end: 16px;
+      --inner-padding-end: 12px;
+      --min-height: 52px;
+      margin-bottom: 4px;
+
+      &.item-has-error {
+        --background: rgba(var(--ion-color-danger-rgb), 0.05);
+        border: 1px solid var(--ion-color-danger);
+      }
+
+      ion-icon {
+        font-size: 20px;
+        margin-right: 12px;
+      }
+
+      ion-input {
+        --padding-start: 0;
+        font-size: 16px;
+      }
+    }
+
+    .error-message {
+      padding: 4px 16px 0;
+      min-height: 20px;
+
+      small {
+        font-size: 13px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .signup-button {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    --border-radius: 12px;
+    height: 52px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.3px;
+  }
+
+  .info-text {
+    text-align: center;
+    margin-top: 8px;
+
+    p {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 0;
+      font-size: 13px;
+      color: var(--ion-color-medium);
+      line-height: 1.5;
+
+      ion-icon {
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+    }
+  }
 }

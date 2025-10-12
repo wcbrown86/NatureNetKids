@@ -1,23 +1,22 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import 'rxjs/add/operator/map';
-
-import * as firebase from 'firebase';
+import { Database, ref, query, orderByChild, equalTo, limitToLast } from '@angular/fire/database';
 
 @Injectable()
 export class EventData {
 
-  constructor() {
+  constructor(private database: Database) {
   }
 
-  getLimitedCategoryList(number): any {
-    //return firebase.database().ref('/observations').limitToLast(number);//gets all observations
-    return firebase.database().ref('/observations').orderByChild("activity").equalTo('NNK').limitToLast(number);//get only the NNK observations
+  getLimitedCategoryList(number: number): any {
+    const observationsRef = ref(this.database, '/observations');
+    // Get only the NNK observations
+    return query(observationsRef, orderByChild("activity"), equalTo('NNK'), limitToLast(number));
   }
 
-//Not implemented, is used to get the users form firebase for name retrieval
-  getUserFromFirebase(uid){
-    return firebase.database().ref('/users').equalTo(uid);
+  // Not implemented, is used to get the users from firebase for name retrieval
+  getUserFromFirebase(uid: string) {
+    const usersRef = ref(this.database, '/users');
+    return query(usersRef, equalTo(uid));
   }
 
 }

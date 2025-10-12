@@ -1,29 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { NavController, ModalController } from 'ionic-angular';
+import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthProvider } from '../../providers/auth-provider';
-import { HomePage } from '../home/home';
-import { HelpPage } from '../help/help';
-//Firebase import for uploading user sign id
-import { AngularFire } from 'angularfire2';
  
 @Component({
   selector: 'page-signup',
-  templateUrl: 'signup.html'
+  templateUrl: 'signup.html',
+  styleUrls: ['signup.scss']
 })
-export class SignupPage {
-  signupForm: FormGroup;
-  email: AbstractControl;
-  password: AbstractControl;
+export class SignupPage implements OnInit {
+  signupForm!: FormGroup;
+  email!: AbstractControl;
+  password!: AbstractControl;
   error: any;
  
-  constructor(public navCtrl: NavController, 
-    public modalCtrl: ModalController, 
-    private forumBld: FormBuilder, 
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder, 
     private auth: AuthProvider,
-    angFire: AngularFire)
-  {
-    this.signupForm = this.forumBld.group({  
+    private alertController: AlertController
+  ) {}
+
+  ngOnInit() {
+    this.signupForm = this.formBuilder.group({  
       'email': ['', Validators.compose([Validators.required, Validators.pattern(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)])],
       'password': ['', Validators.compose([Validators.required, Validators.minLength(6)])],
     });
@@ -32,32 +32,48 @@ export class SignupPage {
     this.password = this.signupForm.controls['password'];
   }
  
-  submit(): void { 
-    if(this.signupForm.valid) {
-        var credentials = ({email: this.email.value, password: this.password.value});
-        this.auth.registerUser(credentials).subscribe(registerData => {
-            alert('You are registered and logged in.');
-            this.navCtrl.setRoot(HomePage);
-        }, registerError => {
-          if (registerError.code === 'auth/weak-password' || registerError.code === 'auth/email-already-in-use')
-          {
-            alert(registerError.message);
+  async submit(): Promise<void> { 
+    if (this.signupForm.valid) {
+      const credentials = { email: this.email.value, password: this.password.value };
+      this.auth.registerUser(credentials).subscribe({
+        next: async (registerData) => {
+          const alert = await this.alertController.create({
+            header: 'Success',
+            message: 'You are registered and logged in.',
+            buttons: ['OK']
+          });
+          await alert.present();
+          this.router.navigate(['/home']);
+        }, 
+        error: async (registerError) => {
+          let message = 'Registration failed';
+          if (registerError.code === 'auth/weak-password' || registerError.code === 'auth/email-already-in-use') {
+            message = registerError.message;
           }
+          const alert = await this.alertController.create({
+            header: 'Error',
+            message: message,
+            buttons: ['OK']
+          });
+          await alert.present();
           this.error = registerError;
-        });
-    }else{
-      alert("You must fillout all the fields correctly to signup.");
+        }
+      });
+    } else {
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: 'You must fill out all the fields correctly to signup.',
+        buttons: ['OK']
+      });
+      await alert.present();
     }
   }
 
-  home(){
-  this.navCtrl.setRoot(HomePage);
-  //let homeModal = this.modalCtrl.create(HomePage);
-  //homeModal.present();
+  home() {
+    this.router.navigate(['/home']);
   } 
 
   help() {
-    let helpModal = this.modalCtrl.create(HelpPage);
-    helpModal.present();
+    this.router.navigate(['/help']);
   }
 }
