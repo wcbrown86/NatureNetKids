@@ -1,10 +1,11 @@
 
 //Imports for Cordova and native Ionic fuctions
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, ModalController } from '@ionic/angular';
 
 //Page Imports for Navigation
-import { Camera } from 'ionic-native';
+// TODO: Install and import @capacitor/camera plugin
+// import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { UploadPhotoPage } from '../upload-photo/upload-photo';
 import { HelpPage } from '../help/help';
 
@@ -19,8 +20,7 @@ export class TakePhotoPage {
   public base64Image: string;
 
   //
-  constructor(public navCtrl: NavController, 
-  public navParams: NavParams,
+  constructor(public navCtrl: NavController,
   public modalCtrl: ModalController) {}
 
   //function to take the user back to the home page
@@ -33,59 +33,55 @@ export class TakePhotoPage {
 
   //Fuction to let the user take a photo when the photo 
   //button is clicked
-  takePhoto(){
-    //Camera function that uses the device camra to take a photo 
-    Camera.getPicture({
-      destinationType: Camera.DestinationType.DATA_URL,
-      targetWidth: 1000,
-      targetHeight: 1000
-    }).then((imageData) => {
-      // imageData is a base64 encoded string
-      this.base64Image = "data:image/jpeg;base64," + imageData;
-      //stores the photo in a varable to pass the information to the 
-      //next page.
-      let photoInfo = this.base64Image;
-      //creates the next page and loads the page
-      let uploadPhoto = this.modalCtrl.create(UploadPhotoPage, {photo: photoInfo});
-      uploadPhoto.present();
-    }, (err) => {
-      console.log(err);
-    });
-
+  async takePhoto(){
+    // TODO: Implement with @capacitor/camera
+    // const image = await Camera.getPhoto({
+    //   quality: 90,
+    //   allowEditing: false,
+    //   resultType: CameraResultType.DataUrl,
+    //   source: CameraSource.Camera,
+    //   width: 1000,
+    //   height: 1000
+    // });
+    // this.base64Image = image.dataUrl;
+    // const modal = await this.modalCtrl.create({
+    //   component: UploadPhotoPage,
+    //   componentProps: { photo: this.base64Image }
+    // });
+    // return await modal.present();
+    
+    console.warn('Camera functionality not yet implemented - install @capacitor/camera');
+    alert('Camera functionality requires @capacitor/camera plugin to be installed');
   }
 
   //lets the user pick a photo from there gallery or photo library
-  choosePhoto(){
-   //Camera function that pulls a photo from the device library.  
+  async choosePhoto(){
+   // TODO: Implement with @capacitor/camera
+   // const image = await Camera.getPhoto({
+   //   quality: 90,
+   //   allowEditing: false,
+   //   resultType: CameraResultType.DataUrl,
+   //   source: CameraSource.Photos
+   // });
+   // this.base64Image = image.dataUrl;
+   // const modal = await this.modalCtrl.create({
+   //   component: UploadPhotoPage,
+   //   componentProps: { photo: this.base64Image }
+   // });
+   // return await modal.present();
    
-   
-   Camera.getPicture({
-     //photo options, more options avalible if needed
-     sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-     destinationType: Camera.DestinationType.DATA_URL
-    }).then((imageData) => {
-      //stores the photo into the base64Image varable 
-      this.base64Image = 'data:image/jpeg;base64,'+ imageData;
-      //stores the photo in a varable to pass the information to the 
-      //next page.
-      let photoInfo = this.base64Image;
-      //creates the next page and loads the page
-      let uploadPhoto = this.modalCtrl.create(UploadPhotoPage, {photo: photoInfo});
-      uploadPhoto.present();
-     }, (err) => {
-       //Logs any errors the error can be sent to an alert if needed. 
-      console.log(err);
-    });
-
-
+   console.warn('Photo library functionality not yet implemented - install @capacitor/camera');
+   alert('Photo library functionality requires @capacitor/camera plugin to be installed');
   }
 
   //This function creates the help page 
-  help() {
+  async help() {
 
     //creates the help page and presents it. 
-    let helpModal = this.modalCtrl.create(HelpPage);
-    helpModal.present();
+    const helpModal = await this.modalCtrl.create({
+      component: HelpPage
+    });
+    return await helpModal.present();
   }
 
 }

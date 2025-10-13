@@ -2,7 +2,8 @@
 //Ionic base imports for Ionic compenets
 import { Component } from '@angular/core';
 //Navigation control imports. 
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, ModalController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 //Page imports needed for navigation. 
 import { HomePage } from '../home/home';
@@ -18,16 +19,23 @@ export class DetailObservationPage {
   observation: any;
 
   //Construtor that has all Navigation variables needed. 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController, 
+    public modalCtrl: ModalController,
+    private router: Router
+  ) {
     
     //This catches the information that is passed from the Observations page. 
-    this.observation = navParams.get('observation');
+    const navigation = this.router.getCurrentNavigation();
+    if (navigation?.extras?.state) {
+      this.observation = navigation.extras.state['observation'];
+    }
   }
 
   //Function tht is caled when the home button is selected from the Nav Bar.
   //Sends the user back to the main home page
   home(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.navigateRoot('/home');
   }
 
   //Default function that is added when the page is made that logs the page load logs.
@@ -39,9 +47,11 @@ export class DetailObservationPage {
   //Function that is called when the Help button is selected from the Nav bar
   //Shows the user the defalt help page. 
   //Need to add dynamic help information that is relivant to this page.
-  help() {
-    let helpModal = this.modalCtrl.create(HelpPage);
-    helpModal.present();
+  async help() {
+    const helpModal = await this.modalCtrl.create({
+      component: HelpPage
+    });
+    await helpModal.present();
   }
 
 }

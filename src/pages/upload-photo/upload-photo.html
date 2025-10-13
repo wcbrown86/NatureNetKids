@@ -72,7 +72,7 @@
             </button>
         </ion-item>
         <!--Changes the addText button change when user adds text -->
-        <div *ngIf="text==null">
+        <div *ngIf="text===null">
             <ion-item>
                 <button ion-button small full color="addText" (click)="addText()">
                 <ion-icon name="md-text"><br>Add Text</ion-icon>
@@ -80,7 +80,7 @@
             </ion-item>
         </div>
 
-        <div *ngIf="text!=null">
+        <div *ngIf="text!==null">
             <ion-item>
                 <button ion-button small full color="submit" (click)="addText()">
                 <ion-icon name="md-checkmark"><br>Add Text</ion-icon>

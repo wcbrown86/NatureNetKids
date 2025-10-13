@@ -2,7 +2,7 @@
 //Default import from Ionic page generation 
 import { Component } from '@angular/core';
 //Import needed for navigation controls.
-import { NavController, ModalController, NavParams } from 'ionic-angular';
+import { NavController, ModalController } from '@ionic/angular';
 //added AuthProvider, needed for logout function
 import { AuthProvider } from '../../providers/auth-provider';
 //Page imports needed for navigation
@@ -17,7 +17,7 @@ export class SettingsPage {
 
   //Constructor that create variables need for navigation and AuthProvider
   //all variables are injected with the constructor. 
-  constructor(public navCtrl: NavController, public navParams: NavParams,
+  constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
     public auth: AuthProvider) {}
 
@@ -28,11 +28,13 @@ export class SettingsPage {
   }
 
   //login function that take the user to the login and register page.
-  goToLogin() {
+  async goToLogin() {
 
     //Creates the modal view and presents the modal.
-    let loginModal = this.modalCtrl.create(LoginPage);
-    loginModal.present();
+    const loginModal = await this.modalCtrl.create({
+      component: LoginPage
+    });
+    await loginModal.present();
   }
 
   //function that is called to take the user back to the home page.

@@ -4,7 +4,7 @@ import { Observable, from } from 'rxjs';
  
 @Injectable()
 export class AuthProvider {
-  private authState: User | null = null;
+  public authState: User | null = null;
   public onAuth: EventEmitter<User | null> = new EventEmitter();
   public user$: Observable<User | null>;
    

@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, LoadingController } from 'ionic-angular';
+import { NavController, ModalController, LoadingController } from '@ionic/angular';
 
 import { EventData } from '../../providers/event-data';
 import { HomePage } from '../home/home';
 import { DetailObservationPage } from '../detail-observation/detail-observation';
 import { HelpPage } from '../help/help';
-
-//Angulrfire imports
-import { AngularFire } from 'angularfire2';
 
 
 @Component({
@@ -19,10 +16,8 @@ export class ObservationsPage {
  public b: number=0;
  public observationsList: any[];
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams,
+  constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
-    private angFire: AngularFire,
     private loadingCtrl: LoadingController,
     public eventData: EventData) {
       
@@ -58,17 +53,21 @@ export class ObservationsPage {
   }
 
   viewSelectedObservation(observation){
-    this.navCtrl.push(DetailObservationPage, {observation: observation});
+    this.navCtrl.navigateForward('/detail-observation', {
+      state: { observation: observation }
+    });
   }
 
   home(){
-    this.navCtrl.setRoot(HomePage);
+    this.navCtrl.navigateRoot('/home');
 
   }
 
-  help() {
-    let helpModal = this.modalCtrl.create(HelpPage);
-    helpModal.present();
+  async help() {
+    const helpModal = await this.modalCtrl.create({
+      component: HelpPage
+    });
+    await helpModal.present();
   }
 
 }

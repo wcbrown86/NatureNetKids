@@ -2,7 +2,7 @@
 //Default import for Ionic.
 import { Component } from '@angular/core';
 //Imports needed for navigation controls.
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, ModalController } from '@ionic/angular';
 
 //Page Imports needed to navigate to different pages. 
 import { HomePage } from '../home/home';
@@ -14,8 +14,8 @@ import { HomePage } from '../home/home';
 export class HelpPage {
 
   //Constructor that generates variables needed for navigation.
-  constructor(public navCtrl: NavController, public navParams: NavParams,
-        public modalCtrl: ModalController) {}
+  constructor(public navCtrl: NavController,
+    public modalCtrl: ModalController) {}
 
   //Page load log function, not needed for the app to function
   //left for error detection if needed.
@@ -30,11 +30,13 @@ export class HelpPage {
   }
 
   //Home function that sends the user back to the home page
-  home(){
+  async home(){
 
     //Creates the modal and presents the page.
-    let homeModel = this.modalCtrl.create(HomePage);
-    homeModel.present();
+    const homeModel = await this.modalCtrl.create({
+      component: HomePage
+    });
+    await homeModel.present();
   }
 
 }

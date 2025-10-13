@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, ModalController } from '@ionic/angular';
 //Form
 import { FormGroup, FormBuilder } from '@angular/forms';
 //Pages
@@ -18,35 +18,35 @@ export class AddTextPage {
   userText: string;
   error: any;
 
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams, 
+  constructor(public navCtrl: NavController,
     public modalCtrl: ModalController,
-  	private forumBld: FormBuilder,
-    public view: ViewController) {}
+  	private forumBld: FormBuilder) {}
 
     addText(){
         if(this.userText!=null) {
           let data = {
             userEntered: this.userText
           }
-          this.view.dismiss(data); 
+          this.modalCtrl.dismiss(data); 
         }else{
           alert("Must type in something to continue to add the observation or touch the cancel button to go back");
         }
     }
 
     cancelText(){
-      this.view.dismiss();
+      this.modalCtrl.dismiss();
     }
 
     home() {
 
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.navigateRoot('/home');
     }
     
-    help() {
-      let helpModal = this.modalCtrl.create(HelpPage);
-      helpModal.present();
+    async help() {
+      const helpModal = await this.modalCtrl.create({
+        component: HelpPage
+      });
+      await helpModal.present();
     }
 
     ionViewDidLoad() {

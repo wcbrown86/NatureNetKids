@@ -2,8 +2,9 @@
 //Imports for ionic functions, and native plugins
 import { Component } from '@angular/core';
 //Imports for page navigation and the alert popup.
-import { NavController, NavParams, ViewController, AlertController, ModalController } from 'ionic-angular';
-import { MediaPlugin, MediaObject } from '@ionic-native/media';
+import { NavController, AlertController, ModalController } from '@ionic/angular';
+// TODO: Install and configure @capacitor/media or equivalent plugin
+// import { MediaPlugin, MediaObject } from '@ionic-native/media';
 
 //Page Navigation imports
 import { HomePage } from '../home/home';
@@ -16,56 +17,45 @@ import { HelpPage } from '../help/help';
 export class RecordPagePage {
 
   //Global variable used to make recording controls simple.
-  fileRecorded: MediaObject;
+  fileRecorded: any; // MediaObject
   
   //Injected variables needed for functionality
-  constructor(public navCtrl: NavController, 
-    public navParams: NavParams,
-  	public viewCtrl: ViewController, 
+  constructor(public navCtrl: NavController,
     public alertCtrl: AlertController,
-    private media: MediaPlugin,
+    // private media: MediaPlugin,
     public modalCtrl: ModalController) {}
 
   /*alert function to pass error messages to the user as needed. 
     TODO: Add error handling with this function, it is not 
     currently being used. */
-  showAlert(message){
+  async showAlert(message){
 
     //create alert with message passed from function call
-    let alert = this.alertCtrl.create({
-      title: 'Error',
-      subTitle: message,
+    const alert = await this.alertCtrl.create({
+      header: 'Error',
+      message: message,
       buttons: ['OK']
-    })
+    });
 
     //Shows the alert
-    alert.present();
+    await alert.present();
   }
 
   //Takes the use back to the home Page
-  home() {
+  async home() {
 
     //Creates the home page and presents the page. 
-    let home = this.modalCtrl.create(HomePage);
-    home.present();
+    const home = await this.modalCtrl.create({
+      component: HomePage
+    });
+    await home.present();
   }
 
   //Start record function, this creates the file in the temp folder
   recordAudio(){
-   /* 
-    //This creates teh media file labeled record.wav. 
-   this.media.create('record.wav')
-   .then((file: MediaObject) => {
-
-        //file is a temporary referance to the recored file
-        file.startRecord();
-        //the referance of the file object is passed to fileRecorded 
-        //This is to be used to alow for global access to the funcitons of MediaObject
-        this.fileRecorded = file;
-      });
-      */
-     this.fileRecorded = this.media.create('record.wav');
-     this.fileRecorded.startRecord();
+   // TODO: Implement with Capacitor media plugin
+   console.warn('Media recording not yet implemented');
+   alert('Audio recording requires media plugin to be installed and configured');
   }
 
   //Stop Recording fucntion
@@ -105,15 +95,17 @@ export class RecordPagePage {
 
     //This pops the page off the stack and passes the MediaObject 
     //Back to the upload page
-    this.viewCtrl.dismiss(this.fileRecorded);
+    this.modalCtrl.dismiss(this.fileRecorded);
   }
 
   //Help page fucntion to take the user to the help Page
-  help() {
+  async help() {
 
     //this creates the help page and presetens the page. 
-    let helpModal = this.modalCtrl.create(HelpPage);
-    helpModal.present();
+    const helpModal = await this.modalCtrl.create({
+      component: HelpPage
+    });
+    await helpModal.present();
   }
 
 }
